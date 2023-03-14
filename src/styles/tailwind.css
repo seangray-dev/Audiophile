@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* * {
+    border: 1px solid red;
+  } */
+}
+
+@layer components {
+  /* Position the main menu */
+  /* nav {
+    position: relative;
+    z-index: 10;
+  } */
+
+  /* Style the mobile menu
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 9;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  } */
+
+  /* Slide in the mobile menu when it's open */
+  /* .mobile-menu.slide-in {
+    transform: translateY(0);
+  } */
+}
