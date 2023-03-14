@@ -17,7 +17,7 @@ module.exports = {
             fontWeight: '700',
           },
         ],
-        mobileShop: [
+        subtitle: [
           '13px',
           {
             lineHeight: '17.76px',
@@ -29,6 +29,7 @@ module.exports = {
 
       colors: {
         brightOrange: '#D87D4A',
+        brightOrangeHover: '#FBAF85',
         jetBlack: '#101010',
         paleSilver: '#F1F1F1',
         snow: '#FAFAFA',

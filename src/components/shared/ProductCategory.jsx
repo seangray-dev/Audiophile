@@ -23,7 +23,7 @@ function ProductCategory() {
             <a className='text-mobileMenu' href='/'>
               HEADPHONES
             </a>
-            <a className='text-mobileShop text-gray' href='/'>
+            <a className='text-subtitle text-gray' href='/'>
               SHOP{' '}
               <img
                 className='inline-block align-middle'
@@ -41,7 +41,7 @@ function ProductCategory() {
             <a className='text-mobileMenu' href='/'>
               SPEAKERS
             </a>
-            <a className='text-mobileShop text-gray' href='/'>
+            <a className='text-subtitle text-gray' href='/'>
               SHOP{' '}
               <img
                 className='inline-block align-middle'
@@ -59,7 +59,7 @@ function ProductCategory() {
             <a className='text-mobileMenu' href='/'>
               EARPHONES
             </a>
-            <a className='text-mobileShop text-gray' href='/'>
+            <a className='text-subtitle text-gray' href='/'>
               SHOP{' '}
               <img
                 className='inline-block align-middle'
