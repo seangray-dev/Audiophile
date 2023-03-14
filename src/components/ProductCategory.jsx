@@ -1,8 +1,17 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 
 function ProductCategory() {
+  const [showProductCategory, setShowProductCategory] = useState(false);
+
+  useEffect(() => {
+    setShowProductCategory(true);
+  }, []);
+
   return (
-    <div className='bg-pureWhite'>
+    <div
+      className={`bg-pureWhite product-category ${
+        showProductCategory ? 'active' : ''
+      }`}>
       <ul className='pt-[84px] md:pt-[110px] flex flex-col md:flex-row md:justify-between gap-[100px] md:gap-[10px] md:max-w-[689px] mx-auto items-center lg:hidden'>
         <li className=''>
           <div className='relative flex flex-col gap-[22px] text-center bg-paleSilver rounded-lg px-[110px] md:px-[54px] pt-[88px] pb-[22px] mx-auto'>

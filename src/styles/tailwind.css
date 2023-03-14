@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer base {
-  /* * {
-    border: 1px solid red;
-  } */
+  * {
+    font-family: 'Manrope';
+    /* border: 1px solid red; */
+  }
 }
 
 @layer components {
@@ -32,4 +33,25 @@
   /* .mobile-menu.slide-in {
     transform: translateY(0);
   } */
+
+  .product-category {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 64px); /* subtract the height of the Nav component */
+    background-color: white;
+    overflow-y: auto; /* add scroll bar if needed */
+    transition: transform 1s ease-out;
+    transform: translateY(-100%);
+    z-index: 10;
+  }
+
+  .product-category.active {
+    transform: translateY(0);
+  }
+
+  nav {
+    z-index: 20;
+  }
 }
