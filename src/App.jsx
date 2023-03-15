@@ -3,6 +3,7 @@ import Nav from './components/shared/Nav';
 import Hero from './components/home/Hero';
 import ProductCategoryHome from './components/home/ProductCateogryHome.jsx';
 import ProductShowcase from './components/home/ProductShowcase';
+import About from './components/shared/About';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Hero></Hero>
       <ProductCategoryHome></ProductCategoryHome>
       <ProductShowcase></ProductShowcase>
+      <About></About>
     </div>
   );
 }
