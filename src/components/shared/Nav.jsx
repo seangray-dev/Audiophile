@@ -33,13 +33,12 @@ function Nav() {
             <a href='/contact'>EARPHONES</a>
           </li>
         </ul>
-        {/* add link to shopping cart */}
-        <a href=''>
+        <button id='shopping-cart'>
           <img
             src='/assets/shared/desktop/icon-cart.svg'
             alt='View shopping cart'
           />
-        </a>
+        </button>
       </nav>
       {isMobileMenuOpen && <ProductCategory></ProductCategory>}
     </header>

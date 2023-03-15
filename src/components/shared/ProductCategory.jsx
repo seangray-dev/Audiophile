@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import ButtonShop from '/src/components/shared/buttons/Button-Shop.jsx';
 
 function ProductCategory() {
   const [showProductCategory, setShowProductCategory] = useState(false);
@@ -23,12 +24,7 @@ function ProductCategory() {
             <a className='text-mobileMenu' href='/'>
               HEADPHONES
             </a>
-            <a className='text-subtitle text-gray' href='/'>
-              SHOP{' '}
-              <img
-                className='inline-block align-middle'
-                src='/assets/shared/desktop/icon-arrow-right.svg'></img>
-            </a>
+            <ButtonShop></ButtonShop>
           </div>
         </li>
         <li className=''>
@@ -41,12 +37,7 @@ function ProductCategory() {
             <a className='text-mobileMenu' href='/'>
               SPEAKERS
             </a>
-            <a className='text-subtitle text-gray' href='/'>
-              SHOP{' '}
-              <img
-                className='inline-block align-middle'
-                src='/assets/shared/desktop/icon-arrow-right.svg'></img>
-            </a>
+            <ButtonShop></ButtonShop>
           </div>
         </li>
         <li className=''>
@@ -59,12 +50,7 @@ function ProductCategory() {
             <a className='text-mobileMenu' href='/'>
               EARPHONES
             </a>
-            <a className='text-subtitle text-gray' href='/'>
-              SHOP{' '}
-              <img
-                className='inline-block align-middle'
-                src='/assets/shared/desktop/icon-arrow-right.svg'></img>
-            </a>
+            <ButtonShop></ButtonShop>
           </div>
         </li>
       </ul>
