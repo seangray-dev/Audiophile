@@ -108,6 +108,13 @@ module.exports = {
         heroTablet: 'url(public/assets/home/tablet/image-header.jpg)',
         heroDesktop: 'url(public/assets/home/desktop/image-hero.jpg)',
         patternCircles: 'url(public/assets/home/desktop/pattern-circles.svg)',
+        'zx7-mobile': 'url(public/assets/home/mobile/image-speaker-zx7.jpg)',
+        'zx7-tablet': 'url(public/assets/home/tablet/image-speaker-zx7.jpg)',
+        'zx7-desktop': 'url(public/assets/home/desktop/image-speaker-zx7.jpg)',
+        'yx1-mobile': 'url(public/assets/home/mobile/image-earphones-yx1.jpg)',
+        'yx1-tablet': 'url(public/assets/home/tablet/image-earphones-yx1.jpg)',
+        'yx1-desktop':
+          'url(public/assets/home/desktop/image-earphones-yx1.jpg)',
       },
     },
   },

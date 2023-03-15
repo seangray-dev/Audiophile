@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import ButtonShop from '/src/components/shared/buttons/Button-Shop.jsx';
+import products from '/src/data/products.json';
 
 function ProductCategory({ imgUrl, alt, category, href }) {
   return (
@@ -20,27 +21,32 @@ function ProductCategory({ imgUrl, alt, category, href }) {
 }
 
 function ProductCategoryHome() {
+  // Filter the products to get only the desired ones
+  const filteredProducts = products
+    .filter(
+      (product) =>
+        product.slug === 'xx99-mark-one-headphones' ||
+        product.slug === 'zx9-speaker' ||
+        product.slug === 'yx1-earphones'
+    )
+    // Sort headphones, speakers, eaarphones
+    .sort((a, b) => {
+      const categoryOrder = { headphones: 0, speakers: 1, earphones: 2 };
+      return categoryOrder[a.category] - categoryOrder[b.category];
+    });
+
   return (
     <div className='bg-pureWhite mb-[120px]'>
       <ul className='pt-[92px] md:pt-[110px] flex flex-col md:grid md:grid-cols-3 gap-[68px] md:gap-[10px] lg:gap-[30px] md:max-w-[689px] lg:max-w-[1110px] mx-auto items-center'>
-        <ProductCategory
-          imgUrl='/assets/shared/desktop/image-category-thumbnail-headphones.png'
-          alt='Headphones'
-          category='HEADPHONES'
-          href='/'
-        />
-        <ProductCategory
-          imgUrl='/assets/shared/desktop/image-category-thumbnail-speakers.png'
-          alt='Speakers'
-          category='SPEAKERS'
-          href='/'
-        />
-        <ProductCategory
-          imgUrl='/assets/shared/desktop/image-category-thumbnail-earphones.png'
-          alt='Earphones'
-          category='EARPHONES'
-          href='/'
-        />
+        {filteredProducts.map((product) => (
+          <ProductCategory
+            key={product.id}
+            imgUrl={product.categoryImage.categoryPreview}
+            alt={product.name}
+            category={product.category.toUpperCase()}
+            href={`/products/${product.slug}`}
+          />
+        ))}
       </ul>
     </div>
   );
