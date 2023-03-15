@@ -51,7 +51,8 @@ function Nav() {
 function Footer() {
   return (
     <footer className='bg-pureBlack'>
-      <div className=''>
+      <hr className='w-[101px] h-[4px] bg-brightOrange mx-auto' />
+      <div>
         <div>
           <Nav></Nav>
         </div>

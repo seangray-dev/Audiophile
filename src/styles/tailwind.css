@@ -18,7 +18,7 @@
     }
   }
 
-  @media (mind-width: 1400px) {
+  @media (mind-width: 1440px) {
     .container {
       max-width: 1109px;
     }
