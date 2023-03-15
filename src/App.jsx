@@ -4,6 +4,7 @@ import Hero from './components/home/Hero';
 import ProductCategoryHome from './components/home/ProductCateogryHome.jsx';
 import ProductShowcase from './components/home/ProductShowcase';
 import About from './components/shared/About';
+import Footer from './components/shared/Footer';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <ProductCategoryHome></ProductCategoryHome>
       <ProductShowcase></ProductShowcase>
       <About></About>
+      <Footer></Footer>
     </div>
   );
 }

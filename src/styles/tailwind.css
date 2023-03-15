@@ -23,6 +23,14 @@
       max-width: 1109px;
     }
   }
+
+  .social-links svg path {
+    transition: fill 0.3s ease;
+  }
+
+  .social-links svg:hover path {
+    fill: #d87d4a;
+  }
 }
 
 @layer components {
