@@ -107,6 +107,7 @@ module.exports = {
         heroMobile: 'url(public/assets/home/mobile/image-header.jpg)',
         heroTablet: 'url(public/assets/home/tablet/image-header.jpg)',
         heroDesktop: 'url(public/assets/home/desktop/image-hero.jpg)',
+        patternCircles: 'url(public/assets/home/desktop/pattern-circles.svg)',
       },
     },
   },
