@@ -11,7 +11,7 @@ function ProductCategory({ imgUrl, alt, category, href }) {
           src={imgUrl}
           alt={alt}
         />
-        <a className='text-mobileMenu' href={href}>
+        <a className='text-mobileMenu lg:text-h6' href={href}>
           {category}
         </a>
         <ButtonShop></ButtonShop>

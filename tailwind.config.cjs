@@ -115,6 +115,7 @@ module.exports = {
         'yx1-tablet': 'url(public/assets/home/tablet/image-earphones-yx1.jpg)',
         'yx1-desktop':
           'url(public/assets/home/desktop/image-earphones-yx1.jpg)',
+        'zx-9-desktop': 'url(public/assets/home/desktop/image-speaker-zx9.png)',
       },
     },
   },

@@ -4,25 +4,34 @@ import ButtonTransparent from '/src/components/shared/buttons/Button-Transparent
 
 function ProductMain() {
   return (
-    <div className='bg-brightOrange bg-patternCircles bg-bottom bg-cover bg-no-repeat flex flex-col items-center rounded-lg text-center pb-[55px]'>
-      <img
-        className='w-1/2 mt-[55px] mb-8 md:hidden'
-        src='public/assets/home/mobile/image-speaker-zx9.png'
-        alt='zx-9 speaker'
-      />
-      <img
-        className='w-1/4 mt-[55px] mb-8 hidden md:block'
-        src='public/assets/home/tablet/image-speaker-zx9.png'
-        alt='zx-9 speaker'
-      />
-      <h3 className='text-h3 md:text-h1 text-pureWhite uppercase mb-6'>
-        ZX9<br></br> Speaker
-      </h3>
-      <p className='text-body text-pureWhite opacity-75 mb-6 max-w-[349px]'>
-        Upgrade to premium speakers that are phenomenally built to deliver truly
-        remarkable sound.
-      </p>
-      <ButtonBlack>See product</ButtonBlack>
+    <div className='bg-brightOrange bg-patternCircles bg-bottom bg-cover bg-no-repeat flex flex-col items-center rounded-lg text-center pb-[55px] md:pb-[64px] lg:grid lg:grid-cols-2 lg:text-left lg:pb-[124px] lg:pt-[133px] lg:gap-[138px] overflow-hidden'>
+      <div className='relative z-0'>
+        <img
+          className='w-1/2 mt-[55px] mb-8 mx-auto md:hidden'
+          src='public/assets/home/mobile/image-speaker-zx9.png'
+          alt='zx-9 speaker'
+        />
+        <img
+          className='w-1/3 mt-[55px] mb-8 mx-auto hidden md:block lg:hidden'
+          src='public/assets/home/tablet/image-speaker-zx9.png'
+          alt='zx-9 speaker'
+        />
+        <img
+          className='absolute -z-10 bottom-0 left-1/2 transform -translate-x-1/2 w-9/12 -mb-[280px] hidden lg:block'
+          src='public/assets/home/desktop/image-speaker-zx9.png'
+          alt='zx-9 speaker'
+        />
+      </div>
+      <div>
+        <h3 className='text-h3 md:text-h1 text-pureWhite uppercase mb-6'>
+          ZX9<br></br> Speaker
+        </h3>
+        <p className='text-body text-pureWhite opacity-75 mb-6 max-w-[349px]'>
+          Upgrade to premium speakers that are phenomenally built to deliver
+          truly remarkable sound.
+        </p>
+        <ButtonBlack>See product</ButtonBlack>
+      </div>
     </div>
   );
 }
