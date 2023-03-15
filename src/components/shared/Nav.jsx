@@ -1,6 +1,49 @@
 import React, { useState } from 'react';
 import ProductCategory from './ProductCategory';
 
+function MobileMenuButton({ onClick }) {
+  return (
+    <button className='lg:hidden' onClick={onClick}>
+      <img src='/assets/shared/mobile/hamburger.svg' alt='menu' />
+    </button>
+  );
+}
+
+function NavLinks() {
+  return (
+    <ul className='hidden lg:flex gap-[34px]'>
+      <li>
+        <a
+          className='hover:text-brightOrange transition-colors duration-300'
+          href='/'>
+          HOME
+        </a>
+      </li>
+      <li>
+        <a
+          className='hover:text-brightOrange transition-colors duration-300'
+          href='/products'>
+          HEADPHONES
+        </a>
+      </li>
+      <li>
+        <a
+          className='hover:text-brightOrange transition-colors duration-300'
+          href='/about'>
+          SPEAKERS
+        </a>
+      </li>
+      <li>
+        <a
+          className='hover:text-brightOrange transition-colors duration-300'
+          href='/contact'>
+          EARPHONES
+        </a>
+      </li>
+    </ul>
+  );
+}
+
 function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showProductCategory, setShowProductCategory] = useState(false);
@@ -12,27 +55,12 @@ function Nav() {
 
   return (
     <header className='bg-pureBlack'>
-      <nav className='mx-auto text-pureWhite flex justify-between py-8 max-w-[310px] md:max-w-[689px] lg:max-w-[1109px]'>
-        <button className='lg:hidden' onClick={toggleMobileMenu}>
-          <img src='/assets/shared/mobile/hamburger.svg' alt='menu' />
-        </button>
+      <nav className='mx-auto text-pureWhite text-subtitle flex justify-between py-8 max-w-[310px] md:max-w-[689px] lg:max-w-[1109px]'>
+        <MobileMenuButton onClick={toggleMobileMenu} />
         <a href='/'>
           <img src='/assets/shared/desktop/logo.svg' alt='audiophile-logo' />
         </a>
-        <ul className='hidden lg:flex gap-[34px]'>
-          <li>
-            <a href='/'>HOME</a>
-          </li>
-          <li>
-            <a href='/products'>HEADPHONES</a>
-          </li>
-          <li>
-            <a href='/about'>SPEAKERS</a>
-          </li>
-          <li>
-            <a href='/contact'>EARPHONES</a>
-          </li>
-        </ul>
+        <NavLinks />
         <button id='shopping-cart'>
           <img
             src='/assets/shared/desktop/icon-cart.svg'
@@ -40,7 +68,7 @@ function Nav() {
           />
         </button>
       </nav>
-      {isMobileMenuOpen && <ProductCategory></ProductCategory>}
+      {isMobileMenuOpen && <ProductCategory />}
     </header>
   );
 }
