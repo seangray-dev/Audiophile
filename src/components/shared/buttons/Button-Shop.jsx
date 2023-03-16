@@ -3,13 +3,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 function ButtonShop(props) {
-  const handleClick = (e) => {
-    e.preventDefault();
-
+  const handleClick = () => {
     const options = {
       top: 0,
       left: 0,
-      behavior: 'smooth',
     };
 
     window.scrollTo(options);

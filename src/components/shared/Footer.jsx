@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const handleClick = (e) => {
+const handleClick = () => {
   const options = {
     top: 0,
     left: 0,
-    behavior: 'smooth',
   };
 
   window.scrollTo(options);

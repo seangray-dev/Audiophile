@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     font-family: 'Manrope';
     /* border: 1px solid red; */
