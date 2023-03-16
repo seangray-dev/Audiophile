@@ -16,13 +16,12 @@ import ProductDetails from './components/pages/ProductDetails';
 function App() {
   return (
     <div className='App'>
-      <ProductDetails></ProductDetails>
-      {/* <Nav></Nav> */}
-      {/* <Hero></Hero> */}
-      {/* <ProductCategoryHome></ProductCategoryHome> */}
-      {/* <ProductShowcase></ProductShowcase> */}
-      {/* <About></About>
-      <Footer></Footer> */}
+      <Nav></Nav>
+      <Hero></Hero>
+      <ProductCategoryHome></ProductCategoryHome>
+      <ProductShowcase></ProductShowcase>
+      <About></About>
+      <Footer></Footer>
     </div>
   );
 }
