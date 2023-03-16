@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Router, Routes, Route } from 'react-router-dom';
 import Nav from './components/shared/Nav';
-import Hero from './components/pages/home/Hero';
-import ProductCategoryHome from './components/shared/ProductCateogry.jsx';
-import ProductShowcase from './components/pages/home/ProductShowcase';
+import Home from './components/pages/home/Home';
 import About from './components/shared/About';
 import Footer from './components/shared/Footer';
 
@@ -17,9 +15,13 @@ function App() {
   return (
     <div className='App'>
       <Nav></Nav>
-      <Hero></Hero>
-      <ProductCategoryHome></ProductCategoryHome>
-      <ProductShowcase></ProductShowcase>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/headphones' element={<Headphones />} />
+        <Route path='/speakers' element={<Speakers />} />
+        <Route path='/earphones' element={<Earphones />} />
+        <Route path='/product/:id' element={<ProductDetails />} />
+      </Routes>
       <About></About>
       <Footer></Footer>
     </div>

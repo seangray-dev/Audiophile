@@ -1,11 +1,8 @@
 import React from 'react';
-import Nav from '../shared/Nav';
 import ProductTitleHeader from '../shared/ProductTitleHeader';
 import ProductPreviewCard from '../shared/ProductPreviewCard';
-import Footer from '../shared/Footer';
 import productData from '../../data/products.json';
-import ProductCategoryHome from '../shared/ProductCateogry';
-import About from '../shared/About';
+import ProductCategory from '../shared/ProductCateogry';
 
 function Speakers() {
   const speakers = productData.filter(
@@ -14,7 +11,6 @@ function Speakers() {
 
   return (
     <div>
-      <Nav />
       <ProductTitleHeader title='Speakers' />
       <div className='flex flex-col gap-[120px]'>
         {speakers
@@ -29,9 +25,7 @@ function Speakers() {
             />
           ))}
       </div>
-      <ProductCategoryHome />
-      <About />
-      <Footer />
+      <ProductCategory />
     </div>
   );
 }
