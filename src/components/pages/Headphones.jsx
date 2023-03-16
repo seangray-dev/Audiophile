@@ -1,11 +1,11 @@
 import React from 'react';
-import Nav from '../../shared/Nav';
-import ProductTitleHeader from '../../shared/ProductTitleHeader';
-import ProductPreviewCard from '../../shared/ProductPreviewCard';
-import Footer from '../../shared/Footer';
-import productData from '../../../data/products.json';
-import ProductCategoryHome from '../../shared/ProductCateogry';
-import About from '../../shared/About';
+import Nav from '../shared/Nav';
+import ProductTitleHeader from '../shared/ProductTitleHeader';
+import ProductPreviewCard from '../shared/ProductPreviewCard';
+import Footer from '../shared/Footer';
+import productData from '../../data/products.json';
+import ProductCategoryHome from '../shared/ProductCateogry';
+import About from '../shared/About';
 
 function Headphones() {
   const headphones = productData.filter(
