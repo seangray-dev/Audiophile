@@ -25,7 +25,7 @@ const AddToCart = () => {
   };
 
   return (
-    <div className='flex justify-between gap-4 max-w-[296px] mx-auto'>
+    <div className='flex justify-between gap-4 max-w-[296px]'>
       <div className='flex gap-[20px] place-items-center bg-paleSilver mx-auto px-6'>
         <button
           type='button'
