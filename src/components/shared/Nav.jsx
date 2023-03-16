@@ -14,11 +14,11 @@ function NavLinks() {
   return (
     <ul className='hidden lg:flex gap-[34px]'>
       <li>
-        <a
-          className='hover:text-brightOrange transition-colors duration-300'
-          href='/'>
+        <Link
+          to='/'
+          className='hover:text-brightOrange transition-colors duration-300'>
           HOME
-        </a>
+        </Link>
       </li>
       <li>
         <Link
@@ -28,18 +28,18 @@ function NavLinks() {
         </Link>
       </li>
       <li>
-        <a
-          className='hover:text-brightOrange transition-colors duration-300'
-          href='/speakers'>
+        <Link
+          to='/speakers'
+          className='hover:text-brightOrange transition-colors duration-300'>
           SPEAKERS
-        </a>
+        </Link>
       </li>
       <li>
-        <a
-          className='hover:text-brightOrange transition-colors duration-300'
-          href='/earphones'>
+        <Link
+          to='/earphones'
+          className='hover:text-brightOrange transition-colors duration-300'>
           EARPHONES
-        </a>
+        </Link>
       </li>
     </ul>
   );
@@ -58,9 +58,9 @@ function Nav() {
     <header className='bg-pureBlack'>
       <nav className='mx-auto text-pureWhite text-subtitle flex justify-between py-8 max-w-[310px] md:max-w-[689px] lg:max-w-[1109px]'>
         <MobileMenuButton onClick={toggleMobileMenu} />
-        <a href='/'>
+        <Link to='/'>
           <img src='/assets/shared/desktop/logo.svg' alt='audiophile-logo' />
-        </a>
+        </Link>
         <NavLinks />
         <button id='shopping-cart'>
           <img

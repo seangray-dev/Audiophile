@@ -1,35 +1,50 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+const handleClick = (e) => {
+  const options = {
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  };
+
+  window.scrollTo(options);
+};
 
 function NavLinks() {
   return (
     <ul className='flex flex-col gap-4 md:flex-row'>
       <li>
-        <a
+        <Link
           className='hover:text-brightOrange transition-colors duration-300'
-          href='/'>
+          to='/'
+          onClick={handleClick}>
           HOME
-        </a>
+        </Link>
       </li>
       <li>
-        <a
+        <Link
           className='hover:text-brightOrange transition-colors duration-300'
-          href='/products'>
+          to='/headphones'
+          onClick={handleClick}>
           HEADPHONES
-        </a>
+        </Link>
       </li>
       <li>
-        <a
+        <Link
           className='hover:text-brightOrange transition-colors duration-300'
-          href='/about'>
+          to='/speakers'
+          onClick={handleClick}>
           SPEAKERS
-        </a>
+        </Link>
       </li>
       <li>
-        <a
+        <Link
           className='hover:text-brightOrange transition-colors duration-300'
-          href='/contact'>
+          to='/earphones'
+          onClick={handleClick}>
           EARPHONES
-        </a>
+        </Link>
       </li>
     </ul>
   );
@@ -39,9 +54,9 @@ function Nav() {
   return (
     <header className='bg-pureBlack'>
       <nav className='mx-auto text-pureWhite text-subtitle flex flex-col lg:flex-row justify-between items-center md:items-start gap-12 text-center py-8 max-w-[310px] md:max-w-[689px] lg:max-w-[1109px]'>
-        <a className='mx-auto md:mx-0' href='/'>
+        <Link className='mx-auto md:mx-0' onClick={handleClick} to='/'>
           <img src='/assets/shared/desktop/logo.svg' alt='audiophile-logo' />
-        </a>
+        </Link>
         <NavLinks />
       </nav>
     </header>
