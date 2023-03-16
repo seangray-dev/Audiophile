@@ -36,13 +36,13 @@
 @layer components {
   .product-category {
     position: fixed;
-    top: 10%;
+    top: 9%;
     left: 0;
     width: 100%;
-    height: calc(100% - 64px); /* subtract the height of the Nav component */
+    height: calc(50% - 64px);
     background-color: white;
-    overflow-y: auto; /* add scroll bar if needed */
-    transition: transform 1s ease-out;
+    overflow-y: auto;
+    transition: transform 0.5s ease-out;
     transform: translateY(-100%);
     z-index: 10;
   }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ProductCategory from './ProductCategory';
+import { Link } from 'react-router-dom';
 
 function MobileMenuButton({ onClick }) {
   return (
@@ -20,23 +21,23 @@ function NavLinks() {
         </a>
       </li>
       <li>
-        <a
-          className='hover:text-brightOrange transition-colors duration-300'
-          href='/products'>
+        <Link
+          to='/headphones'
+          className='hover:text-brightOrange transition-colors duration-300'>
           HEADPHONES
-        </a>
+        </Link>
       </li>
       <li>
         <a
           className='hover:text-brightOrange transition-colors duration-300'
-          href='/about'>
+          href='/speakers'>
           SPEAKERS
         </a>
       </li>
       <li>
         <a
           className='hover:text-brightOrange transition-colors duration-300'
-          href='/contact'>
+          href='/earphones'>
           EARPHONES
         </a>
       </li>
@@ -74,3 +75,4 @@ function Nav() {
 }
 
 export default Nav;
+export { NavLinks };
