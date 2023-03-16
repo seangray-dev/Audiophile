@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProductCategory from './ProductCategory';
+import ProductCategory from './ProductCategoryNav';
 import { Link } from 'react-router-dom';
 
 function MobileMenuButton({ onClick }) {

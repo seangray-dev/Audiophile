@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Nav from './components/shared/Nav';
 import Hero from './components/home/Hero';
-import ProductCategoryHome from './components/home/ProductCateogryHome.jsx';
+import ProductCategoryHome from './components/shared/ProductCateogry.jsx';
 import ProductShowcase from './components/home/ProductShowcase';
 import About from './components/shared/About';
 import Footer from './components/shared/Footer';

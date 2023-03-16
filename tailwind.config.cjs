@@ -88,6 +88,14 @@ module.exports = {
             fontWeight: '700',
           },
         ],
+        newProduct: [
+          '14px',
+          {
+            lineHeight: '19.12px',
+            letterSpacing: '10px',
+            fontWeight: '400',
+          },
+        ],
       },
 
       colors: {

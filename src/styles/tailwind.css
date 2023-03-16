@@ -54,4 +54,9 @@
   nav {
     z-index: 20;
   }
+
+  .reverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
