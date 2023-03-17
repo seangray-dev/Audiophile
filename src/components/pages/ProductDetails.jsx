@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import AddToCart from '../shared/buttons/AddToCart';
 import products from '../../data/products.json';
+import RecommendProducts from '../shared/RecommendProducts';
 
 const ProductDetails = () => {
   const { slug } = useParams();
@@ -129,6 +130,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+      <RecommendProducts></RecommendProducts>
     </div>
   );
 };
