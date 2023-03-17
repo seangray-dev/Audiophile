@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ButtonOrange from './Button-Orange';
 
-const AddToCart = () => {
+const AddToCart = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (e) => {

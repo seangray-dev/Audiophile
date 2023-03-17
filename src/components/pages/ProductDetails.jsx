@@ -52,7 +52,7 @@ const ProductDetails = () => {
               {product.description}
             </p>
             <h6 className='text-h6'>${product.price}</h6>
-            <AddToCart></AddToCart>
+            <AddToCart product={product}></AddToCart>
           </div>
         </div>
         <div className='container mx-auto lg:flex lg:gap-[125px] lg:max-w-[1110px]'>

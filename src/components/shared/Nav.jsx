@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import MobileNav from './MobileNav';
 import { Link } from 'react-router-dom';
+import MobileNav from './MobileNav';
+import Cart from './cart/Cart';
 
 function MobileMenuButton({ onClick }) {
   return (
@@ -74,6 +75,7 @@ function Nav() {
         </div>
       </nav>
       {isMobileMenuOpen && <MobileNav />}
+      <Cart></Cart>
     </header>
   );
 }
