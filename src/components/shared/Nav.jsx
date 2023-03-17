@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProductCategory from './ProductCategoryNav';
+import MobileNav from './MobileNav';
 import { Link } from 'react-router-dom';
 
 function MobileMenuButton({ onClick }) {
@@ -47,11 +47,12 @@ function NavLinks() {
 
 function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showProductCategory, setShowProductCategory] = useState(false);
+  const [showMobileNav, setShowMobileNav] = useState(false);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   function toggleMobileMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    setShowProductCategory(false);
+    setShowMobileNav(false);
   }
 
   return (
@@ -69,10 +70,10 @@ function Nav() {
               alt='View shopping cart'
             />
           </button>
-          <div className='hidden absolute bg-red-600 top-0 right-0 translate-y-1/2 translate-x-1/2 rounded-full py-0 px-1'></div>
+          <div className='items-cart hidden absolute bg-red-600 top-0 right-0 translate-y-1/2 translate-x-1/2 rounded-full py-0 px-1'></div>
         </div>
       </nav>
-      {isMobileMenuOpen && <ProductCategory />}
+      {isMobileMenuOpen && <MobileNav />}
     </header>
   );
 }

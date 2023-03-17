@@ -38,7 +38,7 @@
 }
 
 @layer components {
-  .product-category {
+  .mobile-menu {
     position: fixed;
     top: 9%;
     left: 0;
@@ -51,7 +51,7 @@
     z-index: 10;
   }
 
-  .product-category.active {
+  .mobile-menu.active {
     transform: translateY(0);
   }
 

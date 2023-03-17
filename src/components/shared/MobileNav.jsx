@@ -1,17 +1,22 @@
 import { React, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ButtonShop from '/src/components/shared/buttons/Button-Shop.jsx';
 
-function ProductCategory() {
-  const [showProductCategory, setShowProductCategory] = useState(false);
+function MobileNav() {
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   useEffect(() => {
-    setShowProductCategory(true);
+    setShowMobileMenu(true);
   }, []);
+
+  function handleClick() {
+    setShowMobileMenu(false);
+  }
 
   return (
     <div
-      className={`bg-pureWhite product-category ${
-        showProductCategory ? 'active' : ''
+      className={`lg:hidden bg-pureWhite mobile-menu ${
+        showMobileMenu ? 'active' : 'hidden'
       }`}>
       <ul className='pt-[84px] md:pt-[110px] flex flex-col md:flex-row md:justify-between gap-[100px] md:gap-[10px] md:max-w-[689px] mx-auto items-center lg:hidden'>
         <li className=''>
@@ -21,10 +26,8 @@ function ProductCategory() {
               src='/assets/shared/desktop/image-category-thumbnail-headphones.png'
               alt=''
             />
-            <a className='text-mobileMenu' href='/'>
-              HEADPHONES
-            </a>
-            <ButtonShop></ButtonShop>
+            <h6 className='text-mobileMenu'>HEADPHONES</h6>
+            <ButtonShop onClick={handleClick} to='/headphones'></ButtonShop>
           </div>
         </li>
         <li className=''>
@@ -34,10 +37,8 @@ function ProductCategory() {
               src='/assets/shared/desktop/image-category-thumbnail-speakers.png'
               alt=''
             />
-            <a className='text-mobileMenu' href='/'>
-              SPEAKERS
-            </a>
-            <ButtonShop></ButtonShop>
+            <h6 className='text-mobileMenu'>SPEAKERS</h6>
+            <ButtonShop onClick={handleClick} to='/speakers'></ButtonShop>
           </div>
         </li>
         <li className=''>
@@ -47,10 +48,8 @@ function ProductCategory() {
               src='/assets/shared/desktop/image-category-thumbnail-earphones.png'
               alt=''
             />
-            <a className='text-mobileMenu' href='/'>
-              EARPHONES
-            </a>
-            <ButtonShop></ButtonShop>
+            <h6 className='text-mobileMenu'>EARPHONES</h6>
+            <ButtonShop onClick={handleClick} to='/earphones'></ButtonShop>
           </div>
         </li>
       </ul>
@@ -58,4 +57,4 @@ function ProductCategory() {
   );
 }
 
-export default ProductCategory;
+export default MobileNav;

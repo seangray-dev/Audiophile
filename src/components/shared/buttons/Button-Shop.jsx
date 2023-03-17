@@ -18,7 +18,7 @@ function ButtonShop(props) {
       onClick={handleClick}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}>
-      <Link className='text-subtitle ' to={props.to}>
+      <Link className='text-subtitle ' to={props.to} onClick={props.onClick}>
         SHOP{' '}
         <img
           className='inline-block align-middle -mt-1'
