@@ -79,34 +79,34 @@ const ProductDetails = () => {
             <div>
               <img
                 className='rounded-lg md:hidden'
-                src={product.gallery.first.mobile}
+                src={`/${product.gallery.first.mobile}`}
                 alt=''
               />
               <img
                 className='rounded-lg hidden md:block lg:hidden'
-                src={product.gallery.first.tablet}
+                src={`/${product.gallery.first.tablet}`}
                 alt=''
               />
               <img
                 className='rounded-lg hidden lg:block'
-                src={product.gallery.first.desktop}
+                src={`/${product.gallery.first.desktop}`}
                 alt=''
               />
             </div>
             <div className='img2'>
               <img
                 className='rounded-lg md:hidden'
-                src={product.gallery.second.mobile}
+                src={`/${product.gallery.second.mobile}`}
                 alt=''
               />
               <img
                 className='rounded-lg hidden md:block lg:hidden'
-                src={product.gallery.second.tablet}
+                src={`/${product.gallery.second.tablet}`}
                 alt=''
               />
               <img
                 className='rounded-lg hidden lg:block'
-                src={product.gallery.second.desktop}
+                src={`/${product.gallery.second.desktop}`}
                 alt=''
               />
             </div>
@@ -114,17 +114,17 @@ const ProductDetails = () => {
           <div>
             <img
               className='rounded-lg md:hidden'
-              src={product.gallery.third.mobile}
+              src={`/${product.gallery.third.mobile}`}
               alt=''
             />
             <img
               className='rounded-lg hidden md:block lg:hidden'
-              src={product.gallery.third.tablet}
+              src={`/${product.gallery.third.tablet}`}
               alt=''
             />
             <img
               className='rounded-lg hidden lg:block'
-              src={product.gallery.third.desktop}
+              src={`/${product.gallery.third.desktop}`}
               alt=''
             />
           </div>
