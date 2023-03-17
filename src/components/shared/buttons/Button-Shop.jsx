@@ -14,12 +14,11 @@ function ButtonShop(props) {
 
   return (
     <motion.button
+      className='text-gray hover:text-brightOrange transition-colors duration-300'
       onClick={handleClick}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}>
-      <Link
-        className='text-subtitle text-gray hover:text-brightOrange transition-colors duration-300'
-        to={props.to}>
+      <Link className='text-subtitle ' to={props.to}>
         SHOP{' '}
         <img
           className='inline-block align-middle -mt-1'

@@ -3,7 +3,7 @@ import ButtonOrange from '/src/components/shared/buttons/Button-Orange.jsx';
 
 function Hero() {
   return (
-    <section className='hero bg-heroMobile bg-cover bg-bottom bg-no-repeat md:bg-heroTablet lg:bg-heroDesktop pb-[110px] md:pb-[167px]'>
+    <section className='hero bg-heroMobile bg-cover bg-bottom bg-no-repeat md:bg-heroTablet xl:bg-heroDesktop xl:bg-bottom-center pb-[110px] md:pb-[167px]'>
       <div className='container mx-auto max-w-[1110px]'>
         <div className='flex flex-col items-center text-center lg:text-left lg:items-start lg:max-w-[398px]'>
           <p className='text-gray tracking-[10px] uppercase mt-[108px] md:mt-[126px] mb-4'>

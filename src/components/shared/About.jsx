@@ -20,17 +20,17 @@ function About() {
       <div className='mx-auto'>
         <img
           className='rounded-lg md:hidden'
-          src='public/assets/shared/mobile/image-best-gear.jpg'
+          src='/assets/shared/mobile/image-best-gear.jpg'
           alt='man wearing headphones listening to music'
         />
         <img
           className='hidden md:block lg:hidden rounded-lg'
-          src='public/assets/shared/tablet/image-best-gear.jpg'
+          src='/assets/shared/tablet/image-best-gear.jpg'
           alt='man wearing headphones listening to music'
         />
         <img
           className='hidden lg:block rounded-lg'
-          src='public/assets/shared/desktop/image-best-gear.jpg'
+          src='/assets/shared/desktop/image-best-gear.jpg'
           alt='man wearing headphones listening to music'
         />
       </div>

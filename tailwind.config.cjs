@@ -112,9 +112,9 @@ module.exports = {
       },
 
       backgroundImage: {
-        heroMobile: 'url(public/assets/home/mobile/image-header.jpg)',
-        heroTablet: 'url(public/assets/home/tablet/image-header.jpg)',
-        heroDesktop: 'url(public/assets/home/desktop/image-hero.jpg)',
+        heroMobile: 'url(/assets/home/mobile/image-header.jpg)',
+        heroTablet: 'url(/assets/home/tablet/image-header.jpg)',
+        heroDesktop: 'url(/assets/home/desktop/image-hero.jpg)',
         patternCircles: 'url(public/assets/home/desktop/pattern-circles.svg)',
         'zx7-mobile': 'url(public/assets/home/mobile/image-speaker-zx7.jpg)',
         'zx7-tablet': 'url(public/assets/home/tablet/image-speaker-zx7.jpg)',
