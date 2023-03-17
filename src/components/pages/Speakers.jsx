@@ -22,6 +22,8 @@ function Speakers() {
               name={speaker.name}
               description={speaker.description}
               newProduct={speaker.new}
+              id={speaker.id}
+              slug={speaker.slug}
             />
           ))}
       </div>

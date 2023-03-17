@@ -22,6 +22,8 @@ function Earphones() {
               name={earphone.name}
               description={earphone.description}
               newProduct={earphone.new}
+              id={earphone.id}
+              slug={earphone.slug}
             />
           ))}
       </div>

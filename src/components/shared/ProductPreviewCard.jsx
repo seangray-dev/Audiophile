@@ -1,7 +1,8 @@
 import React from 'react';
 import ButtonOrange from './buttons/Button-Orange';
+import { Link } from 'react-router-dom';
 
-const ProductPreviewCard = ({ image, name, description, newProduct }) => {
+const ProductPreviewCard = ({ slug, image, name, description, newProduct }) => {
   return (
     <div className='container mx-auto flex flex-col gap-8 md:max-w-[689px] lg:grid lg:grid-cols-2 lg:max-w-[1110px] lg:gap-32 lg:items-center'>
       <div>
@@ -32,7 +33,7 @@ const ProductPreviewCard = ({ image, name, description, newProduct }) => {
         </h3>
         <p className='text-body opacity-50 md:max-w-[572px]'>{description}</p>
         <div>
-          <ButtonOrange>See Product</ButtonOrange>
+          <ButtonOrange to={`/products/${slug}`}>See Product</ButtonOrange>
         </div>
       </div>
     </div>

@@ -14,16 +14,16 @@ import ProductDetails from './components/pages/ProductDetails';
 function App() {
   return (
     <div className='App'>
-      <Nav></Nav>
+      <Nav />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/headphones' element={<Headphones />} />
         <Route path='/speakers' element={<Speakers />} />
         <Route path='/earphones' element={<Earphones />} />
-        <Route path='/product/:id' element={<ProductDetails />} />
+        <Route path='/products/:slug' element={<ProductDetails />} />
       </Routes>
-      <About></About>
-      <Footer></Footer>
+      <About />
+      <Footer />
     </div>
   );
 }
