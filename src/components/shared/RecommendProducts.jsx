@@ -2,6 +2,15 @@ import React from 'react';
 import ButtonOrange from './buttons/Button-Orange';
 import products from '../../data/products.json';
 
+const handleClick = () => {
+  const options = {
+    top: 0,
+    left: 0,
+  };
+
+  window.scrollTo(options);
+};
+
 const RecommendProducts = () => {
   // Get 3 random products
   const randomProducts = [];

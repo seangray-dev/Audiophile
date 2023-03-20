@@ -1,33 +1,18 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import ButtonCheckout from '../buttons/Button-Checkout';
 
 function Cart(props) {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: 'XX99 MK II',
-      image: '/assets/cart/image-xx99-mark-two-headphones.jpg',
-      price: 2999,
-      quantity: 1,
-    },
-    {
-      id: 1,
-      name: 'XX99 MK II',
-      image: '/assets/cart/image-xx99-mark-two-headphones.jpg',
-      price: 2999,
-      quantity: 1,
-    },
-    {
-      id: 1,
-      name: 'XX99 MK II',
-      image: '/assets/cart/image-xx99-mark-two-headphones.jpg',
-      price: 2999,
-      quantity: 1,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+
+  const [cartItemCount, setCartItemCount] = useState(cartItems.length);
+
+  useEffect(() => {
+    setCartItemCount(cartItems.length);
+  }, [cartItems]);
 
   const handleRemoveAll = () => {
     setCartItems([]);
+    props.updateCartItemCount(0);
   };
 
   const handleQuantityChange = (id, newQuantity) => {
@@ -43,11 +28,53 @@ function Cart(props) {
     });
 
     setCartItems(updatedCartItems);
+
+    const itemCount = updatedCartItems.reduce(
+      (accumulator, item) => accumulator + item.quantity,
+      0
+    );
+    setCartItemCount(itemCount);
+  };
+
+  const handleIncrement = (id) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      } else {
+        return item;
+      }
+    });
+
+    setCartItems(updatedCartItems);
+    props.updateCartItemCount(updatedCartItems.length);
+  };
+
+  const handleDecrement = (id) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity > 0 ? item.quantity - 1 : 0,
+        };
+      } else {
+        return item;
+      }
+    });
+
+    setCartItems(updatedCartItems);
+    props.updateCartItemCount(updatedCartItems.length);
   };
 
   const handleCheckout = () => {
     // TODO: Implement checkout functionality
   };
+
+  useEffect(() => {
+    props.updateCartItemCount(cartItems.length);
+  }, [cartItems, props]);
 
   const total = cartItems.reduce(
     (accumulator, item) => accumulator + item.price * item.quantity,
@@ -55,7 +82,7 @@ function Cart(props) {
   );
 
   return (
-    <div className='cart bg-pureWhite pt-8 px-7 rounded-lg max-w-[327px] mx-auto'>
+    <div className='cart bg-pureWhite pt-8 px-7 rounded-lg max-w-[327px] border absolute top-[360px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50'>
       <div className='container mx-auto'>
         <div className='cart-header flex justify-between mb-8'>
           <h2 className='cart-title text-h6'>Cart ({cartItems.length})</h2>
@@ -90,18 +117,23 @@ function Cart(props) {
                   <div className='flex gap-[20px] place-items-center bg-paleSilver mx-auto px-2'>
                     <button
                       type='button'
-                      className='opacity-25 py-2 focus:outline-none '>
+                      className='opacity-25 py-2 focus:outline-none'
+                      onClick={() => handleDecrement(item.id)}>
                       -
                     </button>
                     <input
                       className='bg-paleSilver py-2 w-4 text-center focus:outline-none text-subtitle'
                       type='number'
                       min='1'
-                      value='0'
+                      value={item.quantity}
+                      onChange={(e) =>
+                        handleQuantityChange(item.id, parseInt(e.target.value))
+                      }
                     />
                     <button
                       type='button'
-                      className='opacity-25 py-2 focus:outline-none '>
+                      className='opacity-25 py-2 focus:outline-none'
+                      onClick={() => handleIncrement(item.id)}>
                       +
                     </button>
                   </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ButtonOrange from './Button-Orange';
 
-const AddToCart = ({ product }) => {
+const AddToCart = ({ product, onAddToCart }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (e) => {
@@ -11,6 +11,7 @@ const AddToCart = ({ product }) => {
   const handleAddToCart = () => {
     // Add the product and quantity to the cart
     // You can use a state management library or a global store to manage the cart state
+    onAddToCart(product, quantity);
     console.log(`Added ${quantity} product(s) to the cart`);
   };
 
