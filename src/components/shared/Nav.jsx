@@ -69,7 +69,7 @@ function Nav() {
 
   return (
     <div>
-      <header className='bg-pureBlack sticky top-0 z-50'>
+      <header className='bg-pureBlack sticky top-0 z-50 md:px-4'>
         <nav className='mx-auto text-pureWhite text-subtitle flex justify-between py-8 max-w-[310px] md:max-w-[689px] lg:max-w-[1109px]'>
           <MobileMenuButton onClick={toggleMobileMenu} />
           <Link to='/'>

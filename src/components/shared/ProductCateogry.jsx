@@ -34,7 +34,7 @@ function ProductCategoryHome() {
     });
 
   return (
-    <div className='bg-pureWhite mb-[120px]'>
+    <div className='bg-pureWhite mb-[120px] md:px-4'>
       <ul className='pt-[92px] md:pt-[110px] flex flex-col md:grid md:grid-cols-3 gap-[68px] md:gap-[10px] lg:gap-[30px] md:max-w-[689px] lg:max-w-[1110px] mx-auto items-center'>
         {filteredProducts.map((product) => (
           <ProductCategoryCard

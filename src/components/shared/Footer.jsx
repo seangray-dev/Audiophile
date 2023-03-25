@@ -51,7 +51,7 @@ function NavLinks() {
 
 function Nav() {
   return (
-    <header className='bg-pureBlack'>
+    <header className='bg-pureBlack '>
       <nav className='mx-auto text-pureWhite text-subtitle flex flex-col lg:flex-row justify-between items-center md:items-start gap-12 text-center py-8 max-w-[310px] md:max-w-[689px] lg:max-w-[1109px]'>
         <Link className='mx-auto md:mx-0' onClick={handleClick} to='/'>
           <img src='/assets/shared/desktop/logo.svg' alt='audiophile-logo' />
@@ -64,7 +64,7 @@ function Nav() {
 
 function Footer() {
   return (
-    <footer className='bg-pureBlack'>
+    <footer className='bg-pureBlack md:px-4'>
       <hr className='w-[101px] h-[4px] bg-brightOrange mx-auto' />
       <div>
         <div>

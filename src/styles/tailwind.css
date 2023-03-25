@@ -19,10 +19,11 @@
   @media (min-width: 768px) {
     .container {
       max-width: 689px;
+      padding: 0 1rem;
     }
   }
 
-  @media (mind-width: 1440px) {
+  @media (min-width: 1024px) {
     .container {
       max-width: 1109px;
     }
