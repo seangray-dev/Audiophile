@@ -28,7 +28,7 @@ const RecommendProducts = () => {
   return (
     <section className='container mx-auto text-center mb-[120px] lg:mb-[160px] lg:max-w-[1110px]'>
       <h3 className='uppercase text-h5 md:text-h3 mb-8'>You May Also Like</h3>
-      <div className='flex flex-col gap-14 md:flex-row md:justify-center  md:gap-[11px]'>
+      <div className=' flex flex-col gap-14 md:grid md:grid-cols-3 md:gap-[11px]'>
         {randomProducts.map((product) => (
           <div className='flex flex-col gap-8' key={product.id}>
             {/* images */}
