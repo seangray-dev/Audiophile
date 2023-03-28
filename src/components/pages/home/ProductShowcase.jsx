@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ButtonBlack from '/src/components/shared/buttons/Button-Black.jsx';
 import ButtonTransparent from '/src/components/shared/buttons/Button-Transparent.jsx';
 
@@ -30,7 +31,7 @@ function ProductMain() {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
-        <ButtonBlack>See product</ButtonBlack>
+        <ButtonBlack to={`/products/zx9-speaker`}>See product</ButtonBlack>
       </div>
     </div>
   );
@@ -45,7 +46,9 @@ function ProductSecondary() {
              uppercase mb-6'>
           ZX7 Speaker
         </h4>
-        <ButtonTransparent>See Product</ButtonTransparent>
+        <ButtonTransparent to={`/products/zx7-speaker`}>
+          See Product
+        </ButtonTransparent>
       </div>
     </div>
   );
@@ -74,7 +77,9 @@ function ProductAdditional() {
       <div className='bg-paleSilver py-[41px] md:py-[101px] rounded-lg'>
         <div className='ml-6 lg:ml-[96px]'>
           <h4 className='text-h4 mb-6'>YX1 Earphones</h4>
-          <ButtonTransparent>See Product</ButtonTransparent>
+          <ButtonTransparent to={`/products/yx1-earphones`}>
+            See Product
+          </ButtonTransparent>
         </div>
       </div>
     </div>

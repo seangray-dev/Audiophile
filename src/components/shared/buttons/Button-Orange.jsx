@@ -1,15 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
-const handleClick = () => {
-  const options = {
-    top: 0,
-    left: 0,
-  };
-
-  window.scrollTo(options);
-};
+import ScrollToTop from '../scroll-utils/ScrollToTop';
 
 function ButtonOrange({ to, children }) {
   return (
@@ -18,7 +10,7 @@ function ButtonOrange({ to, children }) {
       whileHover={{ scale: 1 }}
       whileTap={{ scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      onClick={handleClick}>
+      onClick={ScrollToTop}>
       <Link to={to}>{children}</Link>
     </motion.button>
   );

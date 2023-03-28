@@ -1,14 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const handleClick = () => {
-  const options = {
-    top: 0,
-    left: 0,
-  };
-
-  window.scrollTo(options);
-};
+import ScrollToTop from './scroll-utils/ScrollToTop';
 
 function NavLinks() {
   return (
@@ -17,7 +9,7 @@ function NavLinks() {
         <Link
           className='hover:text-brightOrange transition-colors duration-300'
           to='/'
-          onClick={handleClick}>
+          onClick={ScrollToTop}>
           HOME
         </Link>
       </li>
@@ -25,7 +17,7 @@ function NavLinks() {
         <Link
           className='hover:text-brightOrange transition-colors duration-300'
           to='/headphones'
-          onClick={handleClick}>
+          onClick={ScrollToTop}>
           HEADPHONES
         </Link>
       </li>
@@ -33,7 +25,7 @@ function NavLinks() {
         <Link
           className='hover:text-brightOrange transition-colors duration-300'
           to='/speakers'
-          onClick={handleClick}>
+          onClick={ScrollToTop}>
           SPEAKERS
         </Link>
       </li>
@@ -41,7 +33,7 @@ function NavLinks() {
         <Link
           className='hover:text-brightOrange transition-colors duration-300'
           to='/earphones'
-          onClick={handleClick}>
+          onClick={ScrollToTop}>
           EARPHONES
         </Link>
       </li>
@@ -53,7 +45,7 @@ function Nav() {
   return (
     <header className='bg-pureBlack '>
       <nav className='mx-auto text-pureWhite text-subtitle flex flex-col lg:flex-row justify-between items-center md:items-start gap-12 text-center py-8 max-w-[310px] md:max-w-[689px] lg:max-w-[1109px]'>
-        <Link className='mx-auto md:mx-0' onClick={handleClick} to='/'>
+        <Link className='mx-auto md:mx-0' onClick={ScrollToTop} to='/'>
           <img src='/assets/shared/desktop/logo.svg' alt='audiophile-logo' />
         </Link>
         <NavLinks />
