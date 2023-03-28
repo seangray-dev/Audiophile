@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import AddToCart from '../shared/buttons/AddToCart';
 import products from '../../data/products.json';
 import RecommendProducts from '../shared/RecommendProducts';
 
 const ProductDetails = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
 
   const product = products.find((product) => product.slug === slug);
 
@@ -17,7 +18,7 @@ const ProductDetails = () => {
     <div>
       <div>
         <div className='container mx-auto mt-4 md:mt-8 mb-6 lg:mt-20 lg:mb-14 md:max-w-[689px] lg:max-w-[1110px] opacity-50'>
-          <a className='text-body hover:underline' href=''>
+          <a className='text-body hover:underline' onClick={() => navigate(-1)}>
             Go Back
           </a>
         </div>
