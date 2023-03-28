@@ -12,6 +12,20 @@
     /* border: 1px solid red; */
   }
 
+  /* Scrollbar */
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d87d4a;
+  }
+
   .container {
     max-width: 310px;
   }
