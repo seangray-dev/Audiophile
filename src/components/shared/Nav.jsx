@@ -2,6 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MobileNav from './MobileNav';
 import Cart from './cart/Cart';
+import { motion } from 'framer-motion';
+
+const Backdrop = ({ onClick }) => (
+  <motion.div
+    className='fixed inset-0 bg-black opacity-40 z-40'
+    onClick={onClick}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 0.4 }}
+    exit={{ opacity: 0 }}
+  />
+);
 
 function MobileMenuButton({ onClick }) {
   return (
@@ -90,13 +101,28 @@ function Nav() {
             )}
           </div>
         </nav>
-        {isMobileMenuOpen && <MobileNav />}
+        {isMobileMenuOpen && (
+          <>
+            <Backdrop onClick={toggleMobileMenu} />
+            <motion.div
+              className='fixed top-0 left-0 h-full opacity-100 w-full p-6  z-50'
+              initial={{ x: '-100vw' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100vw' }}
+              onClick={toggleMobileMenu}>
+              <MobileNav />
+            </motion.div>
+          </>
+        )}
       </header>
       {cartOpen && (
-        <Cart
-          updateCartItemCount={setCartItemCount}
-          onClose={handleCloseCart}
-        />
+        <>
+          <Backdrop onClick={toggleCart} />
+          <Cart
+            updateCartItemCount={setCartItemCount}
+            onClose={handleCloseCart}
+          />
+        </>
       )}
     </div>
   );

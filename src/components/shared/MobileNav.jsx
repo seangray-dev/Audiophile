@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ButtonShop from '/src/components/shared/buttons/Button-Shop.jsx';
 
-function MobileNav() {
+function MobileNav({ onClose }) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   useEffect(() => {
@@ -11,6 +11,7 @@ function MobileNav() {
 
   function handleClick() {
     setShowMobileMenu(false);
+    onClose();
   }
 
   return (
@@ -18,7 +19,7 @@ function MobileNav() {
       className={`lg:hidden bg-pureWhite mobile-menu ${
         showMobileMenu ? 'active' : 'hidden'
       }`}>
-      <ul className='pt-[84px] md:pt-[110px] flex flex-col md:flex-row md:justify-between gap-[100px] md:gap-[10px] md:max-w-[689px] mx-auto items-center lg:hidden'>
+      <ul className='pt-[84px] md:pt-[110px] flex flex-col md:flex-row md:justify-between gap-[100px] md:gap-[10px] md:max-w-[689px] mx-auto items-center lg:hidden pb-8'>
         <li className=''>
           <div className='relative flex flex-col gap-[22px] text-center bg-paleSilver rounded-lg px-[110px] md:px-[54px] pt-[88px] pb-[22px] mx-auto'>
             <img
