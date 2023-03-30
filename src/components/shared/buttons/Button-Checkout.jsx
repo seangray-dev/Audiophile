@@ -9,7 +9,7 @@ function ButtonCheckout({ to, children }) {
       whileHover={{ scale: 1 }}
       whileTap={{ scale: 0.9 }}
       transition={{ duration: 0.3 }}>
-      <Link to={to}>{children}</Link>
+      <Link to={'./checkout'}>{children}</Link>
     </motion.button>
   );
 }

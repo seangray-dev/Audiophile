@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import ButtonCheckout from '../buttons/Button-Checkout';
+import { Link } from 'react-router-dom';
 import products from '../../../data/products.json';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -48,7 +49,9 @@ function Cart(props) {
   };
 
   const handleCheckout = () => {
-    // TODO: Implement checkout functionality
+    {
+      <Link to='/checkout' />;
+    }
   };
 
   useEffect(() => {

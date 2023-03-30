@@ -109,6 +109,7 @@ module.exports = {
         pureBlack: '#000000',
         gray: '#808080',
         lightGray: '#bfbfbf',
+        paleGray: '#F2F2F2',
       },
 
       backgroundImage: {

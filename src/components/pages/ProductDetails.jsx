@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import AddToCart from '../shared/buttons/AddToCart';
 import products from '../../data/products.json';
