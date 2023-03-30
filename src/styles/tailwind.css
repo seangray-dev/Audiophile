@@ -89,9 +89,9 @@
     border-style: solid;
     border-color: #e5e5e5;
     position: absolute;
-    top: 360px;
+    top: 20px;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%);
     z-index: 50;
   }
 
@@ -99,7 +99,7 @@
     .cart {
       top: 32px;
       right: 0;
-      transform: translateX(20px) translateY(0);
+      transform: translateX(20px);
     }
   }
 
@@ -107,13 +107,13 @@
     .cart {
       top: 70px;
       width: 377px;
-      transform: translateX(120px) translateY(0%);
+      transform: translateX(120px);
     }
   }
 
   @media (min-width: 1136px) {
     .cart {
-      transform: translateX(180px) translateY(0%);
+      transform: translateX(180px);
     }
   }
 }
