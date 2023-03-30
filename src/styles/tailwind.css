@@ -9,7 +9,6 @@
 
   * {
     font-family: 'Manrope';
-    /* border: 1px solid red; */
   }
 
   /* Scrollbar */
@@ -77,5 +76,44 @@
   .reverse {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  .cart {
+    background-color: #ffffff;
+    padding-top: 2rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    border-radius: 0.5rem;
+    width: 327px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e5e5e5;
+    position: absolute;
+    top: 360px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 50;
+  }
+
+  @media (min-width: 768px) {
+    .cart {
+      top: 32px;
+      right: 0;
+      transform: translateX(20px) translateY(0);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cart {
+      top: 70px;
+      width: 377px;
+      transform: translateX(120px) translateY(0%);
+    }
+  }
+
+  @media (min-width: 1136px) {
+    .cart {
+      transform: translateX(180px) translateY(0%);
+    }
   }
 }
