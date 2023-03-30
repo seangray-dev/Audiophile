@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
-import ButtonOrange from './Button-Orange';
+import { motion } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../../redux/cartSlice';
 
-const AddToCart = ({ product, onAddToCart }) => {
+const AddToCart = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
   const handleQuantityChange = (e) => {
     setQuantity(parseInt(e.target.value));
   };
 
   const handleAddToCart = () => {
-    // Add the product and quantity to the cart
-    // You can use a state management library or a global store to manage the cart state
-    onAddToCart(product, quantity);
-    console.log(`Added ${quantity} product(s) to the cart`);
+    dispatch(
+      addItem({
+        ...product,
+        quantity,
+        cartImage: product.image.cart,
+      })
+    );
   };
 
   const handleIncrement = () => {
@@ -30,7 +36,7 @@ const AddToCart = ({ product, onAddToCart }) => {
       <div className='flex gap-[20px] place-items-center bg-paleSilver mx-auto px-6'>
         <button
           type='button'
-          className='opacity-25 py-4  focus:outline-none '
+          className='opacity-25 py-4 focus:outline-none '
           onClick={handleDecrement}>
           -
         </button>
@@ -48,7 +54,14 @@ const AddToCart = ({ product, onAddToCart }) => {
           +
         </button>
       </div>
-      <ButtonOrange onClick={handleAddToCart}>Add To Cart</ButtonOrange>
+      <motion.button
+        className='bg-brightOrange hover:bg-brightOrangeHover transition-colors duration-300 uppercase text-subtitle text-pureWhite px-[30px] py-[15px] md:max-w-[160px]'
+        whileHover={{ scale: 1 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        onClick={handleAddToCart}>
+        Add To Cart
+      </motion.button>
     </div>
   );
 };

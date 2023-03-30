@@ -1,71 +1,42 @@
 import { React, useState, useEffect } from 'react';
 import ButtonCheckout from '../buttons/Button-Checkout';
+import products from '../../../data/products.json';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  removeItem,
+  updateItemQuantity,
+  removeAllItems,
+} from '../../../redux/cartSlice';
 
 function Cart(props) {
-  const [cartItems, setCartItems] = useState([]);
-
-  const [cartItemCount, setCartItemCount] = useState(cartItems.length);
+  const cartItems = useSelector((state) => state.cart.items);
+  const [cartItemCount, setCartItemCount] = useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setCartItemCount(cartItems.length);
   }, [cartItems]);
 
   const handleRemoveAll = () => {
-    setCartItems([]);
-    props.updateCartItemCount(0);
+    dispatch(removeAllItems());
   };
 
   const handleQuantityChange = (id, newQuantity) => {
-    const updatedCartItems = cartItems.map((item) => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: newQuantity,
-        };
-      } else {
-        return item;
-      }
-    });
-
-    setCartItems(updatedCartItems);
-
-    const itemCount = updatedCartItems.reduce(
-      (accumulator, item) => accumulator + item.quantity,
-      0
-    );
-    setCartItemCount(itemCount);
+    dispatch(updateItemQuantity({ id, quantity: newQuantity }));
   };
 
   const handleIncrement = (id) => {
-    const updatedCartItems = cartItems.map((item) => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: item.quantity + 1,
-        };
-      } else {
-        return item;
-      }
-    });
-
-    setCartItems(updatedCartItems);
-    props.updateCartItemCount(updatedCartItems.length);
+    const item = cartItems.find((item) => item.id === id);
+    if (item) {
+      dispatch(updateItemQuantity({ id, quantity: item.quantity + 1 }));
+    }
   };
 
   const handleDecrement = (id) => {
-    const updatedCartItems = cartItems.map((item) => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: item.quantity > 0 ? item.quantity - 1 : 0,
-        };
-      } else {
-        return item;
-      }
-    });
-
-    setCartItems(updatedCartItems);
-    props.updateCartItemCount(updatedCartItems.length);
+    const item = cartItems.find((item) => item.id === id);
+    if (item && item.quantity > 1) {
+      dispatch(updateItemQuantity({ id, quantity: item.quantity - 1 }));
+    }
   };
 
   const handleCheckout = () => {
@@ -82,7 +53,7 @@ function Cart(props) {
   );
 
   return (
-    <div className='cart bg-pureWhite pt-8 px-7 rounded-lg max-w-[327px] border absolute top-[360px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50'>
+    <div className='cart bg-pureWhite pt-8 px-2 rounded-lg max-w-[327px] border absolute top-[360px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50'>
       <div className='container mx-auto'>
         <div className='cart-header flex justify-between mb-8'>
           <h2 className='cart-title text-h6'>Cart ({cartItems.length})</h2>
@@ -97,20 +68,28 @@ function Cart(props) {
             {cartItems.map((item) => (
               <div
                 className='cart-item flex justify-between gap-4 items-center'
-                key={item.id}>
-                <div className='cart-item-image'>
-                  <img
-                    className='rounded-lg max-w-[64px]'
-                    src={item.image}
-                    alt={item.name}
-                  />
-                </div>
-                <div className='cart-item-details'>
-                  <h3 className='cart-item-title text-mobileMenu'>
-                    {item.name}
-                  </h3>
-                  <div className='cart-item-price text-mobileMenu opacity-50'>
-                    ${item.price}
+                key={item.id}
+                border
+                border-red-500>
+                <div className='flex items-center gap-4'>
+                  <div className='cart-item-image'>
+                    <img
+                      className='rounded-lg max-w-[64px]'
+                      src={item.image.cart}
+                      alt={item.name}
+                    />
+                  </div>
+                  <div className='cart-item-details'>
+                    <h3 className='cart-item-title text-mobileMenu mb-1'>
+                      {item.name
+                        .replace(/(headphones|speaker|earphones)/i, '')
+                        .replace(/(mark)/i, 'MK')
+                        .replace(/(wireless)/i, '')
+                        .trim()}
+                    </h3>
+                    <div className='cart-item-price text-mobileMenu opacity-50'>
+                      ${item.price}
+                    </div>
                   </div>
                 </div>
                 <div className='flex justify-between gap-4 max-w-[96px]'>
@@ -145,7 +124,7 @@ function Cart(props) {
               <span className='text-h6'>${total.toFixed(2)}</span>
             </div>
             <div className='mx-auto mb-8'>
-              <ButtonCheckout>Checkout</ButtonCheckout>
+              <ButtonCheckout onClick={handleCheckout}>Checkout</ButtonCheckout>
             </div>
           </div>
         ) : (
