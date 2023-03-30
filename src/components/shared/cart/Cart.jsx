@@ -22,7 +22,11 @@ function Cart(props) {
   };
 
   const handleQuantityChange = (id, newQuantity) => {
-    dispatch(updateItemQuantity({ id, quantity: newQuantity }));
+    if (newQuantity === 0) {
+      dispatch(removeItem(id));
+    } else {
+      dispatch(updateItemQuantity({ id, quantity: newQuantity }));
+    }
   };
 
   const handleIncrement = (id) => {
@@ -34,8 +38,12 @@ function Cart(props) {
 
   const handleDecrement = (id) => {
     const item = cartItems.find((item) => item.id === id);
-    if (item && item.quantity > 1) {
-      dispatch(updateItemQuantity({ id, quantity: item.quantity - 1 }));
+    if (item && item.quantity > 0) {
+      if (item.quantity === 1) {
+        dispatch(removeItem(id));
+      } else {
+        dispatch(updateItemQuantity({ id, quantity: item.quantity - 1 }));
+      }
     }
   };
 
