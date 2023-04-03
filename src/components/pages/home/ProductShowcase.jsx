@@ -9,17 +9,17 @@ function ProductMain() {
       <div className='relative z-0'>
         <img
           className='w-1/2 mt-[55px] mb-8 mx-auto md:hidden'
-          src='public/assets/home/mobile/image-speaker-zx9.png'
+          src='/assets/home/mobile/image-speaker-zx9.png'
           alt='zx-9 speaker'
         />
         <img
           className='w-1/3 mt-[55px] mb-8 mx-auto hidden md:block lg:hidden'
-          src='public/assets/home/tablet/image-speaker-zx9.png'
+          src='/assets/home/tablet/image-speaker-zx9.png'
           alt='zx-9 speaker'
         />
         <img
           className='absolute -z-10 bottom-0 left-1/2 transform -translate-x-1/2 w-9/12 -mb-[280px] hidden lg:block'
-          src='public/assets/home/desktop/image-speaker-zx9.png'
+          src='/assets/home/desktop/image-speaker-zx9.png'
           alt='zx-9 speaker'
         />
       </div>
@@ -60,17 +60,17 @@ function ProductAdditional() {
       <div className='rounded-lg overflow-hidden mb-6 h-full'>
         <img
           className='md:hidden'
-          src='public/assets/home/mobile/image-earphones-yx1.jpg'
+          src='/assets/home/mobile/image-earphones-yx1.jpg'
           alt='yx1 earphones'
         />
         <img
           className='hidden md:block lg:hidden h-full w-full object-fit'
-          src='public/assets/home/tablet/image-earphones-yx1.jpg'
+          src='/assets/home/tablet/image-earphones-yx1.jpg'
           alt='yx1 earphones'
         />
         <img
           className='hidden lg:block h-full w-full object-fit'
-          src='public/assets/home/desktop/image-earphones-yx1.jpg'
+          src='/assets/home/desktop/image-earphones-yx1.jpg'
           alt='yx1 earphones'
         />
       </div>
