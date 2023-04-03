@@ -1,11 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const Checkout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const cartItems = location.state?.cartItems || [];
+  console.log('cartItems', cartItems);
 
   const schema = yup.object().shape({
     name: yup.string().required(),
@@ -44,15 +47,17 @@ const Checkout = () => {
   };
 
   return (
-    <div className='bg-paleGray'>
-      <div className='container mx-auto mt-4 md:mt-8 mb-6 lg:mt-20 lg:mb-14 md:max-w-[689px] lg:max-w-[1110px] opacity-50'>
-        <a className='text-body hover:underline' onClick={() => navigate(-1)}>
+    <div className='bg-paleGray '>
+      <div className='container mx-auto pt-4 md:pt-8 mb-6 lg:pt-20 lg:mb-14 md:max-w-[689px] lg:max-w-[1110px] opacity-50'>
+        <a
+          className=' cursor-pointer text-body hover:underline'
+          onClick={() => navigate(-1)}>
           Go Back
         </a>
       </div>
 
-      <div className='container mx-auto max-w-[327px] bg-white px-6 pt-6 pb-8 rounded-lg'>
-        <form>
+      <form>
+        <div className='container mx-auto max-w-[327px] bg-white px-6 pt-6 pb-8 rounded-lg mb-8'>
           <h2 className='text-h4 uppercase mb-8'>Checkout</h2>
           <h3 className='text-brightOrange text-subtitle uppercase mb-4'>
             Billing Details
@@ -163,9 +168,34 @@ const Checkout = () => {
             </div>
           </div>
           {errors.paymentMethod && <p>{errors.paymentMethod.message}</p>}
-          <button type='submit'>Continue & Pay</button>
-        </form>
-      </div>
+          <div className='mt-8 flex flex-col gap-6'>
+            <div className='flex flex-col gap-2'>
+              <label className='text-[12px] font-bold'>e-Money Number</label>
+              <input
+                className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                placeholder='238521993'
+                {...register('phone')}
+              />
+              {errors.phone && <p>{errors.phone.message}</p>}
+            </div>
+            <div className='flex flex-col gap-2'>
+              <label className='text-[12px] font-bold'>e-Money Pin</label>
+              <input
+                className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                placeholder='6891'
+                {...register('phone')}
+              />
+              {errors.phone && <p>{errors.phone.message}</p>}
+            </div>
+          </div>
+        </div>
+        <div className='container mx-auto max-w-[327px] bg-white px-6 pt-6 pb-8 rounded-lg'>
+          <h3 className='text-h6 uppercase mb-8'>Summary</h3>
+          <div className='flex flex-col gap-6'>
+            <div></div>
+          </div>
+        </div>
+      </form>
     </div>
   );
 };

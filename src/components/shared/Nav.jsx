@@ -105,7 +105,7 @@ function Nav() {
           <>
             <Backdrop onClick={toggleMobileMenu} />
             <motion.div
-              className='fixed top-0 left-0 h-full opacity-100 w-full p-6  z-50'
+              className='fixed top-0 left-0 h-full opacity-100 w-full p-6 z-50'
               initial={{ x: '-100vw' }}
               animate={{ x: 0 }}
               exit={{ x: '-100vw' }}

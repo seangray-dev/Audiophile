@@ -1,7 +1,5 @@
 import { React, useState, useEffect } from 'react';
 import ButtonCheckout from '../buttons/Button-Checkout';
-import { Link } from 'react-router-dom';
-import products from '../../../data/products.json';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   removeItem,
@@ -49,9 +47,10 @@ function Cart(props) {
   };
 
   const handleCheckout = () => {
-    {
-      <Link to='/checkout' />;
-    }
+    props.history.push({
+      pathname: '/checkout',
+      state: { cartItems },
+    });
   };
 
   useEffect(() => {
