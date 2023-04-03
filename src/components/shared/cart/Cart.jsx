@@ -1,30 +1,50 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ButtonCheckout from '../buttons/Button-Checkout';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
+  addItem,
   removeItem,
   updateItemQuantity,
   removeAllItems,
 } from '../../../redux/cartSlice';
 
 function Cart(props) {
-  const cartItems = useSelector((state) => state.cart.items);
+  const [cartItems, setCartItems] = useState([]);
   const [cartItemCount, setCartItemCount] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    if (storedCartItems.length > 0) {
+      setCartItems(storedCartItems);
+    }
+    setCartItemCount(storedCartItems.length);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
     setCartItemCount(cartItems.length);
   }, [cartItems]);
 
   const handleRemoveAll = () => {
     dispatch(removeAllItems());
+    setCartItems([]);
   };
 
   const handleQuantityChange = (id, newQuantity) => {
     if (newQuantity === 0) {
       dispatch(removeItem(id));
+      setCartItems(cartItems.filter((item) => item.id !== id));
     } else {
       dispatch(updateItemQuantity({ id, quantity: newQuantity }));
+      setCartItems(
+        cartItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: newQuantity };
+          }
+          return item;
+        })
+      );
     }
   };
 
@@ -32,6 +52,14 @@ function Cart(props) {
     const item = cartItems.find((item) => item.id === id);
     if (item) {
       dispatch(updateItemQuantity({ id, quantity: item.quantity + 1 }));
+      setCartItems(
+        cartItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          }
+          return item;
+        })
+      );
     }
   };
 
@@ -40,8 +68,17 @@ function Cart(props) {
     if (item && item.quantity > 0) {
       if (item.quantity === 1) {
         dispatch(removeItem(id));
+        setCartItems(cartItems.filter((item) => item.id !== id));
       } else {
         dispatch(updateItemQuantity({ id, quantity: item.quantity - 1 }));
+        setCartItems(
+          cartItems.map((item) => {
+            if (item.id === id) {
+              return { ...item, quantity: item.quantity - 1 };
+            }
+            return item;
+          })
+        );
       }
     }
   };
@@ -52,10 +89,6 @@ function Cart(props) {
       state: { cartItems },
     });
   };
-
-  useEffect(() => {
-    props.updateCartItemCount(cartItems.length);
-  }, [cartItems, props]);
 
   const total = cartItems.reduce(
     (accumulator, item) => accumulator + item.price * item.quantity,

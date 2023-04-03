@@ -3,12 +3,30 @@ import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../../redux/cartSlice';
 
-const AddToCart = ({ product }) => {
+const AddToCart = ({ product, cartItems, setCartItems }) => {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
 
   const handleQuantityChange = (e) => {
-    setQuantity(parseInt(e.target.value));
+    const newQuantity = parseInt(e.target.value);
+    setQuantity(newQuantity);
+
+    // Get existing cart items from local storage
+    const existingCartItems =
+      JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Find the current product in the cart
+    const existingCartItemIndex = existingCartItems.findIndex(
+      (item) => item.slug === product.slug
+    );
+
+    if (existingCartItemIndex !== -1) {
+      // If the product is in the cart, update its quantity
+      existingCartItems[existingCartItemIndex].quantity = newQuantity;
+
+      // Store the updated cart items in local storage
+      localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
+    }
   };
 
   const handleAddToCart = () => {
@@ -19,6 +37,33 @@ const AddToCart = ({ product }) => {
         cartImage: product.image.cart,
       })
     );
+
+    // Get existing cart items from local storage
+    const existingCartItems =
+      JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Check if the current product is already in the cart
+    const existingCartItemIndex = existingCartItems.findIndex(
+      (item) => item.slug === product.slug
+    );
+
+    if (existingCartItemIndex !== -1) {
+      // If the product is already in the cart, update its quantity
+      existingCartItems[existingCartItemIndex].quantity += quantity;
+    } else {
+      // If the product is not in the cart, add it to the cart
+      existingCartItems.push({
+        ...product,
+        quantity,
+        cartImage: product.image.cart,
+      });
+    }
+
+    // Store the updated cart items in local storage
+    localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
+
+    // Update the state of the cartItems in the Cart component
+    setCartItems(existingCartItems);
   };
 
   const handleIncrement = () => {

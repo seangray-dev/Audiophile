@@ -3,12 +3,15 @@ import { useParams, useNavigate } from 'react-router-dom';
 import AddToCart from '../shared/buttons/AddToCart';
 import products from '../../data/products.json';
 import RecommendProducts from '../shared/RecommendProducts';
+import { useState } from 'react';
 
 const ProductDetails = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
 
   const product = products.find((product) => product.slug === slug);
+
+  const [cartItems, setCartItems] = useState([]);
 
   if (!product) {
     return <div>Product not found</div>;
@@ -55,7 +58,11 @@ const ProductDetails = () => {
               {product.description}
             </p>
             <h6 className='text-h6'>${product.price}</h6>
-            <AddToCart product={product}></AddToCart>
+            <AddToCart
+              product={product}
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+            />
           </div>
         </div>
         <div className='container mx-auto lg:flex lg:gap-[125px] lg:max-w-[1110px]'>
