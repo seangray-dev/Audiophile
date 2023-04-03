@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import OrderConfirmationModal from '../shared/cart/OrderConfirmationModal';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { motion } from 'framer-motion';
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const cartItems = location.state?.cartItems || [];
-  console.log('cartItems', cartItems);
+  const [cartItems, setCartItems] = useState([]);
+  const [showOrderConfirmationModal, setShowOrderConfirmationModal] =
+    useState(false);
+
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    setCartItems(storedCartItems);
+  }, []);
 
   const schema = yup.object().shape({
     name: yup.string().required(),
@@ -38,16 +46,31 @@ const Checkout = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm();
+  const [paymentMethod, setPaymentMethod] = useState('eMoney');
+
+  const handlePaymentMethodChange = (e) => {
+    setPaymentMethod(e.target.value);
+  };
+
+  // Calculate the total price of all items in the cart
+  const totalPrice = cartItems.reduce(
+    (accumulator, current) => accumulator + current.price * current.quantity,
+    0
+  );
+
+  // Calculate VAT as 20% of the product total, excluding shipping
+  const VAT = Math.floor((totalPrice / 100) * 20);
+
+  // Calculate the grand total by adding the total, VAT, and shipping
+  const grandTotal = totalPrice + 50;
 
   const onSubmit = (data) => {
-    console.log(data);
+    setShowOrderConfirmationModal(true);
   };
 
   return (
-    <div className='bg-paleGray '>
+    <div className='bg-paleGray pb-24'>
       <div className='container mx-auto pt-4 md:pt-8 mb-6 lg:pt-20 lg:mb-14 md:max-w-[689px] lg:max-w-[1110px] opacity-50'>
         <a
           className=' cursor-pointer text-body hover:underline'
@@ -145,6 +168,8 @@ const Checkout = () => {
                 id='eMoney'
                 value='eMoney'
                 {...register('paymentMethod')}
+                checked={paymentMethod === 'eMoney'}
+                onChange={handlePaymentMethodChange}
               />
               <label
                 htmlFor='eMoney'
@@ -159,6 +184,8 @@ const Checkout = () => {
                 id='cashOnDelivery'
                 value='cashOnDelivery'
                 {...register('paymentMethod')}
+                checked={paymentMethod === 'cashOnDelivery'}
+                onChange={handlePaymentMethodChange}
               />
               <label
                 htmlFor='cashOnDelivery'
@@ -168,34 +195,109 @@ const Checkout = () => {
             </div>
           </div>
           {errors.paymentMethod && <p>{errors.paymentMethod.message}</p>}
-          <div className='mt-8 flex flex-col gap-6'>
-            <div className='flex flex-col gap-2'>
-              <label className='text-[12px] font-bold'>e-Money Number</label>
-              <input
-                className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
-                placeholder='238521993'
-                {...register('phone')}
-              />
-              {errors.phone && <p>{errors.phone.message}</p>}
-            </div>
-            <div className='flex flex-col gap-2'>
-              <label className='text-[12px] font-bold'>e-Money Pin</label>
-              <input
-                className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
-                placeholder='6891'
-                {...register('phone')}
-              />
-              {errors.phone && <p>{errors.phone.message}</p>}
-            </div>
-          </div>
+          {paymentMethod === 'eMoney' && (
+            <motion.div
+              className='mt-8 flex flex-col gap-6'
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}>
+              <div className='flex flex-col gap-2'>
+                <label className='text-[12px] font-bold'>e-Money Number</label>
+                <input
+                  className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                  placeholder='238521993'
+                  {...register('eMoneyNumber', { required: true })}
+                />
+                {errors.eMoneyNumber && <p>This field is required</p>}
+              </div>
+              <div className='flex flex-col gap-2'>
+                <label className='text-[12px] font-bold'>e-Money Pin</label>
+                <input
+                  className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                  placeholder='6891'
+                  {...register('eMoneyPin', { required: true })}
+                />
+                {errors.eMoneyPin && <p>This field is required</p>}
+              </div>
+            </motion.div>
+          )}
         </div>
         <div className='container mx-auto max-w-[327px] bg-white px-6 pt-6 pb-8 rounded-lg'>
           <h3 className='text-h6 uppercase mb-8'>Summary</h3>
           <div className='flex flex-col gap-6'>
-            <div></div>
+            <div>
+              <div className='cart-items flex flex-col gap-6 mb-8'>
+                {cartItems.map((item) => (
+                  <div
+                    className='cart-item flex justify-between gap-4 items-center'
+                    key={item.id}>
+                    <div className='flex items-center gap-4'>
+                      <div className='cart-item-image'>
+                        <img
+                          className='rounded-lg max-w-[64px]'
+                          src={item.image.cart}
+                          alt={item.name}
+                        />
+                      </div>
+                      <div className='cart-item-details'>
+                        <h3 className='cart-item-title text-mobileMenu mb-1'>
+                          {item.name
+                            .replace(/(headphones|speaker|earphones)/i, '')
+                            .replace(/(mark)/i, 'MK')
+                            .replace(/(wireless)/i, '')
+                            .trim()}
+                        </h3>
+                        <div className='cart-item-price text-mobileMenu opacity-50'>
+                          ${item.price}
+                        </div>
+                      </div>
+                    </div>
+                    <div className='opacity-50 font-extrabold'>
+                      x{item.quantity}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className='flex flex-col gap-2'>
+                <div className='flex justify-between items-center'>
+                  <p className='text-body opacity-50 uppercase'>Total</p>
+                  <span className='text-h6'>$ {totalPrice}</span>
+                </div>
+                <div className='flex justify-between items-center'>
+                  <p className='text-body opacity-50 uppercase'>Shipping</p>
+                  <span className='text-h6'>$ 50</span>
+                </div>
+
+                <div className='flex justify-between items-center'>
+                  <p className='text-body opacity-50 uppercase'>
+                    VAT (Included)
+                  </p>
+                  <span className='text-h6'>$ {VAT}</span>
+                </div>
+                <div className='flex justify-between items-center mt-4'>
+                  <p className='text-body opacity-50 uppercase'>Grand total</p>
+                  <span className='text-h6 text-brightOrange'>
+                    $ {grandTotal}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <motion.button
+              className='bg-brightOrange hover:bg-brightOrangeHover transition-colors duration-300 uppercase text-subtitle text-pureWhite py-[15px]'
+              whileHover={{ scale: 1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              onClick={handleSubmit(onSubmit)}>
+              Continue & Pay
+            </motion.button>
           </div>
         </div>
       </form>
+      {showOrderConfirmationModal && (
+        <OrderConfirmationModal cartItems={cartItems}></OrderConfirmationModal>
+      )}
     </div>
   );
 };
