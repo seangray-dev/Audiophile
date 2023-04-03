@@ -63,7 +63,7 @@ function Footer() {
           <Nav></Nav>
         </div>
         <div className='flex flex-col gap-12 md:max-w-[689px] lg:max-w-[1109px] mx-auto'>
-          <p className='text-pureWhite opacity-50 text-center md:text-left lg:max-w-[540px]'>
+          <p className='text-pureWhite opacity-50 text-center max-w-[327px] mx-auto md:mx-0 md:text-left lg:max-w-[540px]'>
             Audiophile is an all in one stop to fulfill your audio needs. We're
             a small team of music lovers and sound specialists who are devoted
             to helping you get the most out of personal audio. Come and visit
