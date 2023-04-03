@@ -110,6 +110,7 @@ module.exports = {
         gray: '#808080',
         lightGray: '#bfbfbf',
         paleGray: '#F2F2F2',
+        silver: '#CFCFCF',
       },
 
       backgroundImage: {
