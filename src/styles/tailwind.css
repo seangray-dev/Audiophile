@@ -87,6 +87,10 @@
     transform: scale(1);
   }
 
+  input[type='radio']:checked + label {
+    border-color: #d87d4a;
+  }
+
   /* Social Links  */
 
   .social-links svg path {
