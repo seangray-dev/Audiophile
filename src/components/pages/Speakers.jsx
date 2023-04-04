@@ -12,10 +12,10 @@ function Speakers() {
   return (
     <div>
       <ProductTitleHeader title='Speakers' />
-      <div className='flex flex-col gap-[120px]'>
+      <div className='flex flex-col gap-[120px] lg:mb-[120px]'>
         {speakers
           .sort((a, b) => b.new - a.new || a.id - b.id)
-          .map((speaker) => (
+          .map((speaker, index) => (
             <ProductPreviewCard
               key={speaker.id}
               image={speaker.image}
@@ -24,6 +24,7 @@ function Speakers() {
               newProduct={speaker.new}
               id={speaker.id}
               slug={speaker.slug}
+              isReversed={index % 2 === 1}
             />
           ))}
       </div>

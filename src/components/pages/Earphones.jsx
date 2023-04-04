@@ -12,10 +12,10 @@ function Earphones() {
   return (
     <div>
       <ProductTitleHeader title='Earphones' />
-      <div className='flex flex-col gap-[120px]'>
+      <div className='flex flex-col gap-[120px] lg:mb-[120px]'>
         {earphones
           .sort((a, b) => b.new - a.new || a.id - b.id)
-          .map((earphone) => (
+          .map((earphone, index) => (
             <ProductPreviewCard
               key={earphone.id}
               image={earphone.image}
@@ -24,6 +24,7 @@ function Earphones() {
               newProduct={earphone.new}
               id={earphone.id}
               slug={earphone.slug}
+              isReversed={index % 2 === 1}
             />
           ))}
       </div>

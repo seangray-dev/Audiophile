@@ -103,6 +103,15 @@
 }
 
 @layer components {
+  .reverse-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
+
+  .reverse-grid > div:nth-child(even) {
+    order: 2;
+  }
+
   .mobile-menu {
     position: fixed;
     top: 9%;
