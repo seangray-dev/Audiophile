@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import AddToCart from '../shared/buttons/AddToCart';
 import products from '../../data/products.json';
 import RecommendProducts from '../shared/RecommendProducts';
+import ProductCategory from '../shared/ProductCateogry';
 import { useState } from 'react';
 
 const ProductDetails = () => {
@@ -141,6 +142,7 @@ const ProductDetails = () => {
         </div>
       </div>
       <RecommendProducts></RecommendProducts>
+      <ProductCategory></ProductCategory>
     </div>
   );
 };

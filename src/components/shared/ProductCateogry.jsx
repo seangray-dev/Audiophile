@@ -39,7 +39,7 @@ function ProductCategoryHome() {
         {filteredProducts.map((product) => (
           <ProductCategoryCard
             key={product.id}
-            imgUrl={product.categoryImage.categoryPreview}
+            imgUrl={`/${product.categoryImage.categoryPreview}`}
             alt={product.name}
             category={product.category.toUpperCase()}
           />
