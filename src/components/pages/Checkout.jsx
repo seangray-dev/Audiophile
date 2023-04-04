@@ -28,35 +28,39 @@ const Checkout = () => {
     setCartItems(storedCartItems);
   }, []);
 
-  const schema = yup.object().shape({
-    name: yup.string().required(),
-    email: yup.string().email().required(),
-    phone: yup.number().integer().required(),
-    address: yup.string().required(),
-    zipCode: yup.string().required(),
-    city: yup.string().required(),
-    country: yup.string().required(),
-    paymentMethod: yup
-      .string()
-      .oneOf(['e-Money', 'Cash on Delivery'])
-      .required(),
-    eMoneyNumber: yup.number().when('paymentMethod', {
-      is: 'e-Money',
-      then: yup.number().required(),
-      otherwise: yup.number(),
-    }),
-    eMoneyPin: yup.number().when('paymentMethod', {
-      is: 'e-Money',
-      then: yup.number().required(),
-      otherwise: yup.number(),
-    }),
-  });
+  // const schema = yup.object().shape({
+  //   name: yup.string().required('Name is required'),
+  //   email: yup.string().email('Wrong format').required('Email is required'),
+  //   phone: yup
+  //     .number()
+  //     .integer('Invalid phone number')
+  //     .required('Phone number is required'),
+  //   address: yup.string().required('Address is required'),
+  //   zipCode: yup.string().required('Zip Code is required'),
+  //   city: yup.string().required('City is required'),
+  //   country: yup.string().required('Country is required'),
+  //   paymentMethod: yup
+  //     .string()
+  //     .oneOf(['e-Money', 'Cash on Delivery'])
+  //     .required(),
+  //   eMoneyNumber: yup.number().when('paymentMethod', {
+  //     is: 'e-Money',
+  //     then: yup.number().required(),
+  //     otherwise: yup.number(),
+  //   }),
+  //   eMoneyPin: yup.number().when('paymentMethod', {
+  //     is: 'e-Money',
+  //     then: yup.number().required(),
+  //     otherwise: yup.number(),
+  //   }),
+  // });
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const [paymentMethod, setPaymentMethod] = useState('eMoney');
 
   const handlePaymentMethodChange = (e) => {
@@ -75,7 +79,7 @@ const Checkout = () => {
   // Calculate the grand total by adding the total, VAT, and shipping
   const grandTotal = totalPrice + 50;
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     setShowOrderConfirmationModal(true);
   };
 
@@ -103,32 +107,62 @@ const Checkout = () => {
           </h3>
           <div className='flex flex-col gap-6 mb-8 md:grid md:grid-cols-2'>
             <div className='flex flex-col gap-2'>
-              <label className='text-[12px] font-bold'>Name</label>
+              <div className='flex justify-between'>
+                <label className='text-[12px] font-bold'>Name</label>
+                {errors.name?.type === 'required' && (
+                  <p className='text-error text-[12px]'>
+                    This field is required
+                  </p>
+                )}
+              </div>
               <input
-                className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                className={`border rounded-lg focus:outline-none pl-4 py-2 placeholder:text-[14px] ${
+                  errors.name ? 'border-red-500' : 'border-silver'
+                }`}
                 placeholder='Alexei Ward'
-                {...register('name')}
+                {...register('name', { required: true })}
               />
-              {errors.name && <p>{errors.name.message}</p>}
             </div>
             <div className='flex flex-col gap-2'>
-              <label className='text-[12px] font-bold'>Email Address</label>
+              <div className='flex justify-between'>
+                <label className='text-[12px] font-bold'>Email Address</label>
+                {errors.email?.type === 'required' && (
+                  <p className='text-error text-[12px]'>
+                    This field is required
+                  </p>
+                )}
+                {errors.email?.type === 'pattern' && (
+                  <p className='text-error text-[12px]'>Wrong format</p>
+                )}
+              </div>
               <input
-                className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                className={`border rounded-lg focus:outline-none pl-4 py-2 placeholder:text-[14px] ${
+                  errors.email ? 'border-red-500' : 'border-silver'
+                }`}
                 placeholder='alexei@mail.com'
-                {...register('email')}
+                {...register('email', {
+                  required: true,
+                  pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+                })}
               />
-              {errors.email && <p>{errors.email.message}</p>}
             </div>
             <div>
               <div className='flex flex-col gap-2'>
-                <label className='text-[12px] font-bold'>Phone</label>
+                <div className='flex justify-between'>
+                  <label className='text-[12px] font-bold'>Phone</label>
+                  {errors.phone?.type === 'required' && (
+                    <p className='text-error text-[12px]'>
+                      This field is required
+                    </p>
+                  )}
+                </div>
                 <input
-                  className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                  className={`border rounded-lg focus:outline-none pl-4 py-2 placeholder:text-[14px] ${
+                    errors.phone ? 'border-red-500' : 'border-silver'
+                  }`}
                   placeholder='+1 202-555-0136'
-                  {...register('phone')}
+                  {...register('phone', { required: true })}
                 />
-                {errors.phone && <p>{errors.phone.message}</p>}
               </div>
             </div>
           </div>
@@ -137,41 +171,73 @@ const Checkout = () => {
           </h3>
           <div className='flex flex-col gap-6 mb-8'>
             <div className='flex flex-col gap-2'>
-              <label className='text-[12px] font-bold'>Your Address</label>
+              <div className='flex justify-between'>
+                <label className='text-[12px] font-bold'>Your Address</label>
+                {errors.address?.type === 'required' && (
+                  <p className='text-error text-[12px]'>
+                    This field is required
+                  </p>
+                )}
+              </div>
               <input
-                className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                className={`border rounded-lg focus:outline-none pl-4 py-2 placeholder:text-[14px] ${
+                  errors.address ? 'border-red-500' : 'border-silver'
+                }`}
                 placeholder='1137 Williams Avenue'
-                {...register('address')}
+                {...register('address', { required: true })}
               />
-              {errors.address && <p>{errors.address.message}</p>}
             </div>
             <div className='flex flex-col gap-6 md:grid md:grid-cols-2 md:gap-6'>
               <div className='flex flex-col gap-2'>
-                <label className='text-[12px] font-bold'>Zip Code</label>
+                <div className='flex justify-between'>
+                  <label className='text-[12px] font-bold'>Zip Code</label>
+                  {errors.name?.type === 'required' && (
+                    <p className='text-error text-[12px]'>
+                      This field is required
+                    </p>
+                  )}
+                </div>
                 <input
-                  className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                  className={`border rounded-lg focus:outline-none pl-4 py-2 placeholder:text-[14px] ${
+                    errors.zipCode ? 'border-red-500' : 'border-silver'
+                  }`}
                   placeholder='10001'
-                  {...register('zip')}
+                  {...register('zipCode', { required: true })}
                 />
-                {errors.zip && <p>{errors.zip.message}</p>}
               </div>
               <div className='flex flex-col gap-2'>
-                <label className='text-[12px] font-bold'>City</label>
+                <div className='flex justify-between'>
+                  <label className='text-[12px] font-bold'>City</label>
+                  {errors.name?.type === 'required' && (
+                    <p className='text-error text-[12px]'>
+                      This field is required
+                    </p>
+                  )}
+                </div>
                 <input
-                  className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                  className={`border rounded-lg focus:outline-none pl-4 py-2 placeholder:text-[14px] ${
+                    errors.city ? 'border-red-500' : 'border-silver'
+                  }`}
                   placeholder='New York'
-                  {...register('city')}
+                  {...register('city', { required: true })}
                 />
-                {errors.city && <p>{errors.city.message}</p>}
               </div>
               <div className='flex flex-col gap-2'>
-                <label className='text-[12px] font-bold'>Country</label>
+                <div className='flex justify-between'>
+                  <label className='text-[12px] font-bold'>Country</label>
+                  {errors.country?.type === 'required' && (
+                    <p className='text-error text-[12px]'>
+                      This field is required
+                    </p>
+                  )}
+                </div>
                 <input
-                  className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                  className={`border rounded-lg focus:outline-none pl-4 py-2 placeholder:text-[14px] ${
+                    errors.address ? 'border-red-500' : 'border-silver'
+                  }`}
                   placeholder='United States'
-                  {...register('country')}
+                  {...register('country', { required: true })}
                 />
-                {errors.country && <p>{errors.country.message}</p>}
               </div>
             </div>
           </div>
@@ -224,22 +290,40 @@ const Checkout = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}>
               <div className='flex flex-col gap-2'>
-                <label className='text-[12px] font-bold'>e-Money Number</label>
+                <div className='flex justify-between'>
+                  <label className='text-[12px] font-bold'>
+                    e-Money Number
+                  </label>
+                  {errors.eMoneyNumber && (
+                    <p className='text-error text-[12px]'>
+                      This field is required
+                    </p>
+                  )}
+                </div>
                 <input
-                  className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                  className={`border rounded-lg focus:outline-none pl-4 py-2 placeholder:text-[14px] ${
+                    errors.eMoneyNumber ? 'border-red-500' : 'border-silver'
+                  }`}
                   placeholder='238521993'
                   {...register('eMoneyNumber', { required: true })}
                 />
-                {errors.eMoneyNumber && <p>This field is required</p>}
               </div>
               <div className='flex flex-col gap-2'>
-                <label className='text-[12px] font-bold'>e-Money Pin</label>
+                <div className='flex justify-between'>
+                  <label className='text-[12px] font-bold'>e-Money Pin</label>
+                  {errors.eMoneyPin && (
+                    <p className='text-error text-[12px]'>
+                      This field is required
+                    </p>
+                  )}
+                </div>
                 <input
-                  className='border border-silver rounded-lg focus:outline-none focus:border-brightOrange pl-4 py-2 placeholder:text-[14px]'
+                  className={`border rounded-lg focus:outline-none pl-4 py-2 placeholder:text-[14px] ${
+                    errors.eMoneyPin ? 'border-red-500' : 'border-silver'
+                  }`}
                   placeholder='6891'
                   {...register('eMoneyPin', { required: true })}
                 />
-                {errors.eMoneyPin && <p>This field is required</p>}
               </div>
             </motion.div>
           )}
