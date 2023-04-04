@@ -88,7 +88,7 @@ function ProductAdditional() {
 
 function ProductCategoryHome() {
   return (
-    <section className='container mx-auto flex flex-col gap-6 mb-[120px] md:max-w-[689px] lg:max-w-[1110px] '>
+    <section className='container mx-auto flex flex-col gap-6 mb-[120px] max-w-[328px] md:max-w-[689px] lg:max-w-[1110px] '>
       <ProductMain></ProductMain>
       <ProductSecondary></ProductSecondary>
       <ProductAdditional></ProductAdditional>

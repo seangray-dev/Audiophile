@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
 import Hero from './Hero';
 import ProductCategory from '../../shared/ProductCateogry';
 import ProductShowcase from './ProductShowcase';

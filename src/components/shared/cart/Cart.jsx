@@ -170,7 +170,7 @@ function Cart({ cartItemCount, setCartItemCount }) {
                 <span className='uppercase opacity-50 text-body'>Total</span>
                 <span className='text-h6'>${total.toFixed(2)}</span>
               </div>
-              <div className='mx-auto mb-8'>
+              <div className='mb-8'>
                 <ButtonCheckout onClick={handleCheckout}>
                   Checkout
                 </ButtonCheckout>
