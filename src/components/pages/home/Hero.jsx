@@ -1,5 +1,6 @@
 import React from 'react';
 import ButtonOrange from '/src/components/shared/buttons/Button-Orange.jsx';
+import { Link } from 'react-router-dom';
 
 function Hero() {
   return (
@@ -16,7 +17,10 @@ function Hero() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <ButtonOrange href='#'>See Product</ButtonOrange>
+
+          <ButtonOrange to='/products/xx99-mark-two-headphones'>
+            See Product
+          </ButtonOrange>
         </div>
       </div>
     </section>
