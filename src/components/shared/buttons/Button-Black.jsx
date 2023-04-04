@@ -10,7 +10,7 @@ function ButtonBlack({ to, children }) {
       whileTap={{ scale: 0.9 }}
       duration={{ duration: 0.3 }}
       onClick={ScrollToTop}
-      className='bg-pureBlack uppercase text-subtitle text-pureWhite px-[30px] py-[15px]  hover:bg-white hover:text-pureBlack hover:outline hover:outline-1 transition-colors duration-300'>
+      className='bg-pureBlack uppercase text-subtitle text-pureWhite px-[30px] py-[15px]  hover:bg-[#4C4C4C] transition-colors duration-300'>
       <Link to={to}>{children}</Link>
     </motion.button>
   );

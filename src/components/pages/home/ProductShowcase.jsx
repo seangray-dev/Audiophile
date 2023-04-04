@@ -5,7 +5,7 @@ import ButtonTransparent from '/src/components/shared/buttons/Button-Transparent
 
 function ProductMain() {
   return (
-    <div className='bg-brightOrange bg-patternCircles bg-bottom bg-cover bg-no-repeat flex flex-col items-center rounded-lg text-center pb-[55px] md:pb-[64px] lg:grid lg:grid-cols-2 lg:text-left lg:pb-[124px] lg:pt-[133px] lg:gap-[138px] overflow-hidden'>
+    <div className='bg-brightOrange bg-patternCircles bg-cover md:bg-auto bg-[center_bottom_10rem] md:bg-[center_bottom] lg:bg-auto lg:bg-[left_-14rem_top_-4rem] bg-no-repeat flex flex-col items-center rounded-lg text-center pb-[55px] md:pb-[64px] lg:grid lg:grid-cols-2 lg:text-left lg:pb-[124px] lg:pt-[133px] lg:gap-[138px] overflow-hidden'>
       <div className='relative z-0'>
         <img
           className='w-1/2 mt-[55px] mb-8 mx-auto md:hidden'
