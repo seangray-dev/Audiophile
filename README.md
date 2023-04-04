@@ -49,6 +49,8 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 - [TailWind CSS](https://tailwindcss.com/) - CSS Framework
+- [Framer Motion](https://www.framer.com/motion/) - Motion Library
+- [React Hook Forms](https://react-hook-form.com/) - Form Validation
 
 ### What I learned
 
