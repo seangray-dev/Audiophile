@@ -9,6 +9,8 @@ function Speakers() {
     (product) => product.category === 'speakers'
   );
 
+  console.log(speakers);
+
   return (
     <div>
       <ProductTitleHeader title='Speakers' />
@@ -18,7 +20,7 @@ function Speakers() {
           .map((speaker, index) => (
             <ProductPreviewCard
               key={speaker.id}
-              image={speaker.image}
+              image={speaker.categoryImage}
               name={speaker.name}
               description={speaker.description}
               newProduct={speaker.new}

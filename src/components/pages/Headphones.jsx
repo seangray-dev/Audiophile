@@ -18,7 +18,7 @@ function Headphones() {
           .map((headphone, index) => (
             <ProductPreviewCard
               key={headphone.id}
-              image={headphone.image}
+              image={headphone.categoryImage}
               name={headphone.name}
               description={headphone.description}
               newProduct={headphone.new}

@@ -6,6 +6,7 @@ const ProductPreviewCard = ({
   slug,
   image,
   name,
+  categoryImage,
   description,
   newProduct,
   isReversed,
@@ -25,8 +26,7 @@ const ProductPreviewCard = ({
           alt={name}
         />
         <img
-          className='mx-auto rounded-lg object-scale-down w-full max-h-[352px] hidden md:block lg:hidden'
-          // className='mx-auto w-full max-h-[352px] object-cover rounded-lg hidden md:block lg:hidden'
+          className='mx-auto rounded-lg hidden md:block lg:hidden'
           src={image.tablet}
           alt={name}
         />

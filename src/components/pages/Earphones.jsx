@@ -18,7 +18,7 @@ function Earphones() {
           .map((earphone, index) => (
             <ProductPreviewCard
               key={earphone.id}
-              image={earphone.image}
+              image={earphone.categoryImage}
               name={earphone.name}
               description={earphone.description}
               newProduct={earphone.new}
