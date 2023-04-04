@@ -7,6 +7,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { motion } from 'framer-motion';
 
+const Backdrop = ({ onClick }) => (
+  <motion.div
+    className='fixed inset-0 bg-black opacity-40 z-40'
+    onClick={onClick}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 0.4 }}
+    exit={{ opacity: 0 }}
+  />
+);
+
 const Checkout = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useState([]);
@@ -71,6 +81,12 @@ const Checkout = () => {
 
   return (
     <div className='bg-paleGray pb-24'>
+      {showOrderConfirmationModal && (
+        <Backdrop
+          onClick={() => setShowOrderConfirmationModal(false)}
+          showBlur={true}
+        />
+      )}
       <div className='container mx-auto pt-4 md:pt-8 mb-6 lg:pt-20 lg:mb-14 md:max-w-[689px] lg:max-w-[1110px] opacity-50'>
         <a
           className=' cursor-pointer text-body hover:underline'
@@ -296,7 +312,10 @@ const Checkout = () => {
         </div>
       </form>
       {showOrderConfirmationModal && (
-        <OrderConfirmationModal cartItems={cartItems}></OrderConfirmationModal>
+        <>
+          <Backdrop />
+          <OrderConfirmationModal cartItems={cartItems} />
+        </>
       )}
     </div>
   );
