@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import MobileNav from './MobileNav';
 import Cart from './cart/Cart';
@@ -57,12 +57,10 @@ function NavLinks() {
   );
 }
 
-function Nav() {
+function Nav({ cartItemCount, setCartItemCount }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showMobileNav, setShowMobileNav] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-
-  const [cartItemCount, setCartItemCount] = useState(0);
 
   function toggleMobileMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -71,11 +69,6 @@ function Nav() {
 
   function toggleCart() {
     setCartOpen(!cartOpen);
-  }
-
-  function handleCloseCart() {
-    setCartOpen(false);
-    setCartItemCount(cartItems.length);
   }
 
   return (
@@ -119,8 +112,8 @@ function Nav() {
         <>
           <Backdrop onClick={toggleCart} />
           <Cart
-            updateCartItemCount={setCartItemCount}
-            onClose={handleCloseCart}
+            cartItemCount={cartItemCount}
+            setCartItemCount={setCartItemCount}
           />
         </>
       )}

@@ -8,19 +8,21 @@ import {
   removeAllItems,
 } from '../../../redux/cartSlice';
 
-function Cart(props) {
+function Cart({ cartItemCount, setCartItemCount }) {
   const [cartItems, setCartItems] = useState([]);
-  const [cartItemCount, setCartItemCount] = useState(0);
   const dispatch = useDispatch();
 
+  // On component mount, retrieve any stored cart items from localStorage.
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    // If there are any stored items, update the cartItems state and set the cart item count.
     if (storedCartItems.length > 0) {
       setCartItems(storedCartItems);
     }
     setCartItemCount(storedCartItems.length);
   }, []);
 
+  // Whenever the cartItems state changes, update the localStorage with the new cart items, and set the cart item count.
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     setCartItemCount(cartItems.length);

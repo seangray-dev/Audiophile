@@ -3,7 +3,13 @@ import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../../../redux/cartSlice';
 
-const AddToCart = ({ product, cartItems, setCartItems }) => {
+const AddToCart = ({
+  product,
+  cartItems,
+  setCartItems,
+  cartItemCount,
+  setCartItemCount,
+}) => {
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
 
@@ -64,6 +70,9 @@ const AddToCart = ({ product, cartItems, setCartItems }) => {
 
     // Update the state of the cartItems in the Cart component
     setCartItems(existingCartItems);
+    setCartItemCount(
+      existingCartItems.reduce((acc, item) => acc + item.quantity, 0)
+    );
   };
 
   const handleIncrement = () => {

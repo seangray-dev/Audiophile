@@ -6,7 +6,7 @@ import RecommendProducts from '../shared/RecommendProducts';
 import ProductCategory from '../shared/ProductCateogry';
 import { useState } from 'react';
 
-const ProductDetails = () => {
+const ProductDetails = ({ setCartItemCount }) => {
   const { slug } = useParams();
   const navigate = useNavigate();
 
@@ -30,7 +30,6 @@ const ProductDetails = () => {
         </div>
         <div className='container mx-auto flex flex-col gap-8 md:max-w-[689px] md:grid md:grid-cols-2 lg:max-w-[1110px] md:gap-[69px] lg:gap-32 md:items-center md:mb-[120px]'>
           <div>
-            {/* why images have to be loaded like this? other areas of code base don't require this with  ../../../ */}
             <img
               className='mx-auto rounded-lg md:hidden'
               src={`/${product.image.mobile}`}
@@ -63,6 +62,7 @@ const ProductDetails = () => {
               product={product}
               cartItems={cartItems}
               setCartItems={setCartItems}
+              setCartItemCount={setCartItemCount}
             />
           </div>
         </div>
