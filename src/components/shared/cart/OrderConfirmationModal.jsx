@@ -12,7 +12,7 @@ const OrderConfirmationModal = ({ cartItems }) => {
 
   return (
     <div className='modal-container'>
-      <div className='bg-pureWhite max-w-[327px] mx-auto px-8 rounded-lg'>
+      <div className='bg-pureWhite max-w-[327px] md:max-w-[540px] mx-auto px-8 rounded-lg'>
         <img
           className='pt-8 mb-6'
           src='/assets/checkout/icon-order-confirmation.svg'
