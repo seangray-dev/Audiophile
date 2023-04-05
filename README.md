@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL:](https://www.frontendmentor.io/solutions/audiophile-ecommerce-website-built-w-react-vite-andtailwind-ohaxbod-QE)
-- [Live Site URL:](https://audiophile-seangray-dev.vercel.app/)
+- [Solution URL](https://www.frontendmentor.io/solutions/audiophile-ecommerce-website-built-w-react-vite-andtailwind-ohaxbod-QE)
+- [Live Site URL](https://audiophile-seangray-dev.vercel.app/)
 
 ### Built with
 
