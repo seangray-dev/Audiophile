@@ -1,4 +1,4 @@
-# (IN DEVELOPMENT) Frontend Mentor - Audiophile e-commerce website solution
+# Frontend Mentor - Audiophile e-commerce website solution
 
 This is a solution to the [Audiophile e-commerce website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
@@ -33,12 +33,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./preview.jpg)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL:](https://www.frontendmentor.io/solutions/audiophile-ecommerce-website-built-w-react-vite-andtailwind-ohaxbod-QE)
+- [Live Site URL:](https://audiophile-seangray-dev.vercel.app/)
 
 ### Built with
 
