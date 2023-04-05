@@ -171,9 +171,7 @@ function Cart({ cartItemCount, setCartItemCount }) {
                 <span className='text-h6'>${total.toFixed(2)}</span>
               </div>
               <div className='mb-8'>
-                <ButtonCheckout onClick={handleCheckout}>
-                  Checkout
-                </ButtonCheckout>
+                <ButtonCheckout onClick={handleCheckout}></ButtonCheckout>
               </div>
             </div>
           ) : (
