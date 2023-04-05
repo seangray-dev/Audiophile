@@ -5,14 +5,16 @@ import ScrollToTop from '../scroll-utils/ScrollToTop';
 
 function ButtonOrange({ to, children }) {
   return (
-    <motion.button
-      className='bg-brightOrange hover:bg-brightOrangeHover transition-colors duration-300 uppercase text-subtitle text-pureWhite px-[30px] py-[15px] md:max-w-[160px]'
-      whileHover={{ scale: 1 }}
-      whileTap={{ scale: 0.9 }}
-      transition={{ duration: 0.3 }}
-      onClick={ScrollToTop}>
-      <Link to={to}>{children}</Link>
-    </motion.button>
+    <Link to={to}>
+      <motion.button
+        className='bg-brightOrange hover:bg-brightOrangeHover transition-colors duration-300 uppercase text-subtitle text-pureWhite px-[30px] py-[15px] md:max-w-[160px]'
+        whileHover={{ scale: 1 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        onClick={ScrollToTop}>
+        {children}
+      </motion.button>
+    </Link>
   );
 }
 
